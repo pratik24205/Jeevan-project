@@ -78,7 +78,6 @@
                             <span class="nxl-mtext">My Wallet</span><span class="nxl-arrow"><i></i></span>
                         </a>
                     </li>
-
                     <!-- <li class="nxl-item">
                         <a href="targets.html" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-activity"></i></span>
@@ -287,193 +286,43 @@
     <!--! ================================================================ !-->
     <main class="nxl-container">
         <div class="main-content">
-            <div class="row" style="margin-left: 2%; margin-right: 1%;">
-                <div class="col-lg-12" style="margin-top: 2%;">
-                    <div class="card border-top-0">
+            <div class="row justify-content-center">
+                <div class="col-xl-12">
+                    <div class="card stretch stretch-full" style="margin-left: 20px; margin-right: 20px; margin-top: 20px; margin-bottom: 20px;">
+                        <div class="card-body" >
+                            <div style="margin-bottom: 20px;">
+                                <h4 class="mb-3">KYC Verification</h4>
+                            </div>
 
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active" id="profileTab" role="tabpanel">
-                                <div class="card-body personal-info">
-                                    <div class="mb-4 d-flex align-items-center justify-content-between">
-                                        <h5 class="fw-bold mb-0 me-4">
-                                            <span class="d-block mb-2">Personal Information:</span>
-                                            <!-- <span class="fs-12 fw-normal text-muted text-truncate-1-line">Following information is publicly displayed, be careful! </span> -->
-                                        </h5>
-                                        <!-- <a href="javascript:void(0);" class="btn btn-sm btn-light-brand">Add New</a> -->
-                                    </div>
-                                    <!-- <div class="row mb-4 align-items-center">
-                                        <div class="col-lg-4">
-                                            <label class="fw-semibold">Avatar: </label>
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <div class="mb-4 mb-md-0 d-flex gap-4 your-brand">
-                                                <div
-                                                    class="wd-100 ht-100 position-relative overflow-hidden border border-gray-2 rounded">
-                                                    <img src="./../assets/images/avatar/1.png"
-                                                        class="upload-pic img-fluid rounded h-100 w-100" alt="">
-                                                    <div
-                                                        class="position-absolute start-50 top-50 end-0 bottom-0 translate-middle h-100 w-100 hstack align-items-center justify-content-center c-pointer upload-button">
-                                                        <i class="feather feather-camera" aria-hidden="true"></i>
-                                                    </div>
-                                                    <input class="file-upload" type="file" accept="image/*">
-                                                </div>
-                                                <div class="d-flex flex-column gap-1">
-                                                    <div class="fs-11 text-gray-500 mt-2"># Upload your prifile</div>
-                                                    <div class="fs-11 text-gray-500"># Avatar size 150x150</div>
-                                                    <div class="fs-11 text-gray-500"># Max upload size 2mb</div>
-                                                    <div class="fs-11 text-gray-500"># Allowed file types: png, jpg,
-                                                        jpeg</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <div class="row mb-4 align-items-center">
-                                        <div class="col-lg-4">
-                                            <label for="firstName" class="fw-semibold">Full Name: </label>
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <div class="input-group">
-                                                <div class="input-group-text"><i class="feather-user"></i></div>
-                                                <input type="text" class="form-control" id="firstName"
-                                                    placeholder="First Name">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="row mb-4 align-items-center">
-                                        <div class="col-lg-4">
-                                            <label for="lastName" class="fw-semibold">Last Name: </label>
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <div class="input-group">
-                                                <div class="input-group-text"><i class="feather-user"></i></div>
-                                                <input type="text" class="form-control" id="lastName"
-                                                    placeholder="Last Name">
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <div class="row mb-4 align-items-center">
-                                        <div class="col-lg-4">
-                                            <label for="email" class="fw-semibold">Email: </label>
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <div class="input-group">
-                                                <div class="input-group-text"><i class="feather-mail"></i></div>
-                                                <input type="text" class="form-control" id="email" placeholder="Email">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="row mb-4 align-items-center">
-                                            <div class="col-lg-4">
-                                                <label for="usernameInput" class="fw-semibold">Username: </label>
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <div class="input-group">
-                                                    <div class="input-group-text"><i class="feather-link-2"></i></div>
-                                                    <div class="input-group-text">https://www.wrapcoders.com/</div>
-                                                    <input type="url" class="form-control" id="usernameInput" placeholder="Username">
-                                                </div>
-                                            </div>
-                                        </div> -->
-                                    <div class="row mb-4 align-items-center">
-                                        <div class="col-lg-4">
-                                            <label for="phone" class="fw-semibold">Phone: </label>
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <div class="input-group">
-                                                <div class="input-group-text"><i class="feather-phone"></i></div>
-                                                <input type="text" class="form-control" id="phone" placeholder="Phone">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="row mb-4 align-items-center">
-                                            <div class="col-lg-4">
-                                                <label for="companyInput" class="fw-semibold">Company: </label>
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <div class="input-group">
-                                                    <div class="input-group-text"><i class="feather-compass"></i></div>
-                                                    <input type="text" class="form-control" id="companyInput" placeholder="Company">
-                                                </div>
-                                            </div>
-                                        </div> -->
-                                    <!-- <div class="row mb-4 align-items-center">
-                                        <div class="col-lg-4">
-                                            <label for="type" class="fw-semibold">Designation: </label>
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <div class="input-group">
-                                                <div class="input-group-text"><i class="feather-briefcase"></i></div>
-                                                <input type="text" class="form-control" id="type"
-                                                    placeholder="Designation" readonly>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- <div class="row mb-4 align-items-center">
-                                        <div class="col-lg-4">
-                                            <label for="gender" class="fw-semibold">Gender:</label>
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <div class="input-group">
-                                                <div class="input-group-text"><i class="feather-user"></i></div>
-                                                <select class="form-control" id="gender"
-                                                    style="appearance: none; -webkit-appearance: none; -moz-appearance: none; font-family: inherit; font-size: inherit; color: inherit;">
-                                                    <option value="" disabled selected>Select Gender</option>
-                                                    <option value="Male">Male</option>
-                                                    <option value="Female">Female</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- <div class="row mb-4 align-items-center">
-                                        <div class="col-lg-4">
-                                            <label for="myTarget" class="fw-semibold">My Target: </label>
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <div class="input-group">
-                                                <div class="input-group-text"><i class="feather-at-sign"></i></div>
-                                                <input type="text" class="form-control" id="myTarget"
-                                                    placeholder="Target">
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- <div style="margin-top:2%; text-align:right;">
-                                        <a href="https://www.fundsroom.com/" class="btn btn-primary text-dark"
-                                            style="width:20%; margin-bottom:10%; text-align:center; display:inline-block;">
-                                            Save
-                                        </a>
-                                    </div> -->
+                            <!-- Hidden userId field -->
+                            <input type="hidden" id="userId">
 
-                                    <!-- <div class="row mb-4 align-items-center">
-                                            <div class="col-lg-4">
-                                                <label for="addressInput_2" class="fw-semibold">Address: </label>
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <div class="input-group">
-                                                    <div class="input-group-text"><i class="feather-map-pin"></i></div>
-                                                    <textarea class="form-control" id="addressInput_2" cols="30" rows="3" placeholder="Address"></textarea>
-                                                </div>
-                                            </div>
-                                        </div> -->
-                                    <!-- <div class="row mb-4 align-items-center">
-                                            <div class="col-lg-4">
-                                                <label for="aboutInput" class="fw-semibold">About: </label>
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <div class="input-group">
-                                                    <div class="input-group-text"><i class="feather-type"></i></div>
-                                                    <textarea class="form-control" id="aboutInput" cols="30" rows="5" placeholder="About"></textarea>
-                                                </div>
-                                            </div>
-                                        </div> -->
-                                </div>
-                                <hr class="my-0">
+                            <!-- Document Type -->
+                            <div class="col-lg-12 mb-4">
+                                <label class="form-label">Document Type<span class="text-danger">*</span></label>
+                                <select class="form-select" id="documentType" data-select2-selector="icon">
+                                    <option value="" disabled selected>Select Document</option>
+                                    <option value="aadhar">Aadhaar</option>
+                                    <option value="pan">PAN</option>
+                                </select>
+                            </div>
 
+                            <!-- File Upload -->
+                            <div class="mb-3">
+                                <label class="form-label">Upload Document <span class="text-danger">*</span></label>
+                                <input type="file" class="form-control" id="documentFile"
+                                    accept="image/*,application/pdf">
+                            </div>
+
+                            <div class="text-end" style="margin-top: 20px;">
+                                <button class="btn btn-primary" id="submitKycBtn">Submit KYC</button>
                             </div>
 
                         </div>
                     </div>
                 </div>
             </div>
+
             <!-- [ Main Content ] end -->
         </div>
         <!-- [ Footer ] end -->
@@ -518,91 +367,65 @@
 
     <script>
         $(document).ready(function () {
-            var userId = JSON.parse(sessionStorage.getItem("userId"));
-            console.log("userId:", userId);
+            // Load userId from sessionStorage
+            const savedUserId = sessionStorage.getItem("userId");
+            $("#userId").val(savedUserId);
 
-            const apiUrl = `https://block-chain-based-universal-income-system.onrender.com/api/v1/user/list/${userId}`;
-            // const updateUrl = `https://fundsaudit.com/api/v1/user/update/${userId}`;
+            $("#submitKycBtn").on("click", function () {
 
-            // Load user data on page load
-            $.ajax({
-                url: apiUrl,
-                type: "GET",
-                success: function (response) {
-                    console.log("response:", response);
-                    if (response.success && response.dataValues) {
-                        const user = response.dataValues;
+                const userId = $("#userId").val();
+                const documentType = $("#documentType").val();
+                const fileInput = $("#documentFile")[0].files[0];
 
-                        // Populate input fields
-                        $("#firstName").val(user.name || "");
-                        $("#lastName").val(user.lastName || "");
-                        $("#email").val(user.email || "");
-                        $("#phone").val(user.mobile || "");
-                        // $("#type").val(
-                        //     user.UserType && user.UserType.name
-                        //         ? user.UserType.name.charAt(0).toUpperCase() + user.UserType.name.slice(1).toLowerCase()
-                        //         : ""
-                        // );
-                        $("#gender").val(user.Gender ? user.Gender.name : "");
-                        // $("#myTarget").val(user.MyTarget || "");
-                    }
-                },
-                error: function (xhr) {
-                    console.error("Error loading user:", xhr.responseText);
+                // Validation
+                if (!documentType || !fileInput) {
+                    Swal.fire({
+                        icon: "warning",
+                        title: "Missing Fields",
+                        text: "Please select document type and upload your file."
+                    });
+                    return;
                 }
-            });
 
-            // On Save button click
-            $(".btn-primary").on("click", function (e) {
-                e.preventDefault();
+                // Prepare form data
+                let formData = new FormData();
+                formData.append("userId", userId);
+                formData.append("documentType", documentType);
+                formData.append("file", fileInput);
 
+                // SweetAlert Loader
                 Swal.fire({
-                    title: "Updating Profile...",
+                    title: "Uploading...",
+                    text: "Please wait while we submit your KYC.",
                     allowOutsideClick: false,
-                    allowEscapeKey: false,
                     didOpen: () => {
                         Swal.showLoading();
                     }
                 });
 
-                // Convert gender name to numeric value
-                let genderVal = $("#gender").val().toLowerCase();
-                let gender = (genderVal === "male" || genderVal === "1") ? 1 : 2;
-
-                // Convert type name to numeric value
-                // let typeVal = $("#type").val().toLowerCase();
-                // let type = (typeVal === "employee" || typeVal === "1") ? 1 : 2;
-
-                const updatedUser = {
-                    firstName: $("#firstName").val(),
-                    lastName: $("#lastName").val(),
-                    email: $("#email").val(),
-                    phoneNumber: $("#phone").val(),
-                    // password: "Password123", 
-                    // type: type,
-                    gender: gender,
-                    // MyTarget: parseInt($("#myTarget").val()) || 0
-                };
-
-                // PUT request
+                // API Call
                 $.ajax({
-                    url: updateUrl,
-                    type: "PUT",
-                    contentType: "application/json",
-                    data: JSON.stringify(updatedUser),
-                    success: function (res) {
-                        console.log(res);
+                    url: "https://block-chain-based-universal-income-system.onrender.com/api/v1/kyc/create",
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+
+                    success: function (response) {
                         Swal.fire({
                             icon: "success",
-                            title: "Profile updated successfully!",
-                            confirmButtonColor: "#3085d6"
+                            title: "KYC Submitted Successfully!",
+                            text: response.message || "We will verify your document soon.",
+                            timer: 2000,
+                            showConfirmButton: false
                         });
                     },
+
                     error: function (xhr) {
                         Swal.fire({
                             icon: "error",
-                            title: "Update failed!",
-                            text: "Something went wrong, Please try again later"
+                            title: "KYC Submission Failed",
+                            text: xhr.responseJSON?.message || "Something went wrong."
                         });
                     }
                 });

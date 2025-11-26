@@ -399,7 +399,7 @@
       });
 
       $.ajax({
-        url: "http://localhost:3000/api/v1/user/login",
+        url: "https://block-chain-based-universal-income-system.onrender.com/api/v1/user/login",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({ email, password }),
@@ -414,8 +414,8 @@
             timer: 1500
           });
 
-          if (response.userId) {
-            sessionStorage.setItem("userId", response.userId);
+          if (response.user && response.user.id) {
+            sessionStorage.setItem("userId", response.user.id);
           }
 
           setTimeout(() => {
