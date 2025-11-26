@@ -299,18 +299,39 @@
     <main class="nxl-container">
         <div class="main-content">
             <div class="row justify-content-center">
-                <div class="col-md-12">
-                    <div class="card text-center p-4" style="margin-top: 20px; margin-left: 20px; margin-right: 20px;">
+                <div class="col-xl-12">
+                    <div class="card stretch stretch-full"
+                        style="margin-left: 20px; margin-right: 20px; margin-top: 20px; margin-bottom: 20px;">
+                        <div class="card-body">
+                            <div style="margin-bottom: 20px;">
+                                <h4 class="mb-3">DID Verification</h4>
+                            </div>
 
-                        <h3 class="fw-bold mb-3">Create Your Wallet</h3>
-                        <p class="mb-4" style="opacity: 0.9;">Click the button below to securely create your blockchain
-                            wallet.</p>
+                            <!-- Hidden userId field -->
+                            <input type="hidden" id="userId">
 
-                        <!-- Creative Button -->
-                        <button id="createWalletBtn" class="btn btn-light fw-bold px-5 py-3"
-                            style="border-radius: 50px; font-size: 18px; box-shadow: 0px 4px 15px rgba(0,0,0,0.2);">
-                            <i class="fa-solid fa-wallet me-2"></i> Create Wallet
-                        </button>
+                            <!-- Document Type -->
+                            <!-- <div class="col-lg-12 mb-4">
+                                <label class="form-label">Document Type<span class="text-danger">*</span></label>
+                                <select class="form-select" id="documentType" data-select2-selector="icon">
+                                    <option value="" disabled selected>Select Document</option>
+                                    <option value="aadhar">Aadhaar</option>
+                                    <option value="pan">PAN</option>
+                                </select>
+                            </div> -->
+
+                            <!-- File Upload -->
+                            <div class="mb-3">
+                                <label class="form-label">Verification code from email <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="code">
+                            </div>
+
+                            <div class="text-end" style="margin-top: 20px;">
+                                <button class="btn btn-primary" id="submitKycBtn">Verify DID</button>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -358,50 +379,78 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        $(document).ready(function () {
+        document.addEventListener("DOMContentLoaded", function () {
 
-            $("#createWalletBtn").on("click", function () {
+            var userId = JSON.parse(sessionStorage.getItem("userId"));
+            document.getElementById("userId").value = userId;
 
-                const userId = sessionStorage.getItem("userId");
+            if (!userId) {
+                Swal.fire({
+                    title: "Not Logged In",
+                    text: "Please login to verify your wallet.",
+                    icon: "warning",
+                    allowOutsideClick: false,
+                    showConfirmButton: false,
+                    didOpen: () => Swal.showLoading()
+                });
 
-                if (!userId) {
+                setTimeout(() => {
+                    window.location.href = "/signin.html";
+                }, 1500);
+
+                return;
+            }
+
+            document.getElementById("submitKycBtn").addEventListener("click", function () {
+
+                const code = document.getElementById("code").value.trim();
+
+                if (!code) {
                     Swal.fire({
-                        icon: "error",
-                        title: "User Not Logged In",
-                        text: "Please login again to continue."
+                        icon: "warning",
+                        title: "Missing Code",
+                        text: "Please enter the verification code sent to your email."
                     });
                     return;
                 }
 
-                // SweetAlert Loader
+                const payload = {
+                    userId: userId,
+                    code: code
+                };
+
                 Swal.fire({
-                    title: "Creating Wallet...",
-                    text: "Please wait while we generate your secure wallet.",
+                    title: "Verifying Wallet...",
+                    text: "Please wait...",
                     allowOutsideClick: false,
                     didOpen: () => Swal.showLoading()
                 });
 
                 $.ajax({
-                    url: "https://block-chain-based-universal-income-system.onrender.com/api/v1/wallet/request-code",
+                    url: "https://block-chain-based-universal-income-system.onrender.com/api/v1/did/did/verify",
                     type: "POST",
                     contentType: "application/json",
-                    data: JSON.stringify({ userId }),
+                    data: JSON.stringify(payload),
 
                     success: function (response) {
                         Swal.fire({
                             icon: "success",
-                            title: "Wallet Created!",
-                            text: response.message || "Your new wallet is now active.",
-                            timer: 2000,
-                            showConfirmButton: false
+                            title: "Wallet Verified!",
+                            text: response.message || "Your wallet is now successfully verified.",
+                            showConfirmButton: false,
+                            timer: 1500
                         });
+
+                        setTimeout(() => {
+                            window.location.href = "/dashboard/templates/profile.html";
+                        }, 1600);
                     },
 
                     error: function (xhr) {
                         Swal.fire({
                             icon: "error",
-                            title: "Wallet Creation Failed",
-                            text: xhr.responseJSON?.message || "Something went wrong."
+                            title: "Verification Failed",
+                            text: xhr.responseJSON?.message || "Invalid verification code."
                         });
                     }
                 });
