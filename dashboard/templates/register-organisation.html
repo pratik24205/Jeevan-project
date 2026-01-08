@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="keyword" content="" />
+    <meta name="author" content="Fundsroom" />
+    <!--! The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags !-->
+    <!--! BEGIN: Apps Title-->
+    <title></title>
+    <!--! END:  Apps Title-->
+    <!--! BEGIN: Favicon-->
+    <link rel="shortcut icon" type="image/x-icon" href="" />
+    <!--! END: Favicon-->
+    <!--! BEGIN: Bootstrap CSS-->
+    <link rel="stylesheet" type="text/css" href="./../assets/css/bootstrap.min.css" />
+    <!--! END: Bootstrap CSS-->
+    <!--! BEGIN: Vendors CSS-->
+    <link rel="stylesheet" type="text/css" href="./../assets/vendors/css/vendors.min.css" />
+    <link rel="stylesheet" type="text/css" href="./../assets/vendors/css/daterangepicker.min.css" />
+    <!--! END: Vendors CSS-->
+    <!--! BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="./../assets/css/theme.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./../assets/vendors/css/tagify.min.css">
+    <link rel="stylesheet" type="text/css" href="./../assets/vendors/css/tagify-data.min.css">
+    <link rel="stylesheet" type="text/css" href="./../assets/vendors/css/quill.min.css">
+    <link rel="stylesheet" type="text/css" href="./../assets/vendors/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="./../assets/vendors/css/select2-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="./../assets/vendors/css/daterangepicker.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="./../assets/css/theme.min.css" />
+    <!--! END: Custom CSS-->
+    <!--! HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries !-->
+    <!--! WARNING: Respond.js doesn"t work if you view the page via file: !-->
+    <!--[if lt IE 9]>
+			<script src="https:oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https:oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+    <!--! ================================================================ !-->
+    <!--! [Start] Navigation Manu !-->
+    <!--! ================================================================ !-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <nav class="nxl-navigation">
+        <div class="navbar-wrapper">
+            <div class="m-header">
+                <!-- <a href="index.html" class="b-brand">
+                    <img src="./../assets/images/FundsAuditText.png" alt="" class="logo logo-lg" />
+                    <img src="./../assets/images/FundsAuditLogo.png" alt="" class="logo logo-sm" />
+                </a> -->
+            </div>
+            <div class="navbar-content">
+                <ul class="nxl-navbar">
+                    <li class="nxl-item nxl-caption">
+                        <label>Navigation</label>
+                    </li>
+                    <li class="nxl-item">
+                        <a href="profile.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-user"></i></span>
+                            <span class="nxl-mtext">My Profile</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+                    <li class="nxl-item">
+                        <a href="kyc.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-user-check"></i></span>
+                            <span class="nxl-mtext">KYC Verification</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+                    <li class="nxl-item">
+                        <a href="wallet.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-briefcase"></i></span>
+                            <span class="nxl-mtext">Create Wallet</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+                    <li class="nxl-item">
+                        <a href="wallet-verification.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-user-check"></i></span>
+                            <span class="nxl-mtext">Wallet Verification</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+                    <li class="nxl-item">
+                        <a href="did-verification.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-user-check"></i></span>
+                            <span class="nxl-mtext">DID Verification</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+                    <!-- <li class="nxl-item">
+                        <a href="targets.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-activity"></i></span>
+                            <span class="nxl-mtext">My Targets</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li> -->
+                    <!-- <li class="nxl-item">
+                        <a href="A.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-user-plus"></i></span>
+                            <span class="nxl-mtext">A (Attract)</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+                    <li class="nxl-item">
+                        <a href="I.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-share-2"></i></span>
+                            <span class="nxl-mtext">I (Interact)</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+                    <li class="nxl-item">
+                        <a href="M.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-file-text"></i></span>
+                            <span class="nxl-mtext">M (Manage)</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li> -->
+                    <!-- <li class="nxl-item">
+                        <a href="I.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-briefcase"></i></span>
+                            <span class="nxl-mtext">I (Interview)</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+                    <li class="nxl-item">
+                        <a href="S.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-check-circle"></i></span>
+                            <span class="nxl-mtext">S (Selection)</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+                    <li class="nxl-item">
+                        <a href="K.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-flag"></i></span>
+                            <span class="nxl-mtext">K (Kick off)</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li> -->
+
+                    <!-- <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-airplay"></i></span>
+                            <span class="nxl-mtext">Dashboard</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
+                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a class="nxl-link" href="CO.html">CO (Connect)</a></li>
+                            <li class="nxl-item"><a class="nxl-link" href="RE.html">RE (Reach)</a></li>
+                            <li class="nxl-item"><a class="nxl-link" href="RE.html">R (Resume)</a></li>
+                            <li class="nxl-item"><a class="nxl-link" href="RE.html">I (Interview)</a></li>
+                            <li class="nxl-item"><a class="nxl-link" href="RE.html">S (Selection)</a></li>
+                            <li class="nxl-item"><a class="nxl-link" href="RE.html">K (Kick off)</a></li>
+                        </ul>
+                    </li> -->
+                    <!-- <li class="nxl-item">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-bar-chart-2"></i></span>
+                            <span class="nxl-mtext">My Performance</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li> -->
+                    <li class="nxl-item">
+                        <a href="javascript:void(0);" class="nxl-link" id="logoutBtn">
+                            <span class="nxl-micon"><i class="feather-log-out"></i></span>
+                            <span class="nxl-mtext">Logout</span>
+                            <span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+
+                    <!-- Admin Page Link (Hidden by Default) -->
+                    <li class="nxl-item nxl-hasmenu" id="adminPageLink" style="display: none;">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-settings"></i></span>
+                            <span class="nxl-mtext">Admin Page</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
+                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a class="nxl-link" href="admin.html">Dashboard Analysis - Edit</a>
+                            </li>
+                            <li class="nxl-item"><a class="nxl-link" href="analysis-edit.html">HR Analysis - Edit</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+    <!--! ================================================================ !-->
+    <!--! [End]  Navigation Manu !-->
+    <!--! ================================================================ !-->
+    <!--! ================================================================ !-->
+    <!--! [Start] Header !-->
+    <!--! ================================================================ !-->
+    <header class="nxl-header">
+        <div class="header-wrapper">
+            <!--! [Start] Header Left !-->
+            <div class="header-left d-flex align-items-center gap-4">
+                <!--! [Start] nxl-head-mobile-toggler !-->
+                <a href="javascript:void(0);" class="nxl-head-mobile-toggler" id="mobile-collapse">
+                    <div class="hamburger hamburger--arrowturn">
+                        <div class="hamburger-box">
+                            <div class="hamburger-inner"></div>
+                        </div>
+                    </div>
+                </a>
+                <!--! [Start] nxl-head-mobile-toggler !-->
+                <!--! [Start] nxl-navigation-toggle !-->
+                <div class="nxl-navigation-toggle">
+                    <a href="javascript:void(0);" id="menu-mini-button">
+                        <i class="feather-align-left"></i>
+                    </a>
+                    <a href="javascript:void(0);" id="menu-expend-button" style="display: none">
+                        <i class="feather-arrow-right"></i>
+                    </a>
+                </div>
+                <!--! [End] nxl-navigation-toggle !-->
+                <!--! [Start] nxl-lavel-mega-menu-toggle !-->
+                <!-- <div class="nxl-lavel-mega-menu-toggle d-flex d-lg-none">
+                    <a href="javascript:void(0);" id="nxl-lavel-mega-menu-open">
+                        <i class="feather-align-left"></i>
+                    </a>
+                </div> -->
+                <!--! [End] nxl-lavel-mega-menu-toggle !-->
+                <!--! [Start] nxl-lavel-mega-menu !-->
+                <div class="nxl-drp-link nxl-lavel-mega-menu">
+                    <div class="nxl-lavel-mega-menu-toggle d-flex d-lg-none">
+                        <a href="javascript:void(0)" id="nxl-lavel-mega-menu-hide">
+                            <i class="feather-arrow-left me-2"></i>
+                            <span>Back</span>
+                        </a>
+                    </div>
+                    <!--! [Start] nxl-lavel-mega-menu-wrapper !-->
+                    <div class="nxl-lavel-mega-menu-wrapper d-flex gap-3">
+                        <!--! [Start] nxl-h-item nxl-mega-menu !-->
+                        <div class="dropdown nxl-h-item nxl-mega-menu">
+                            <!-- <a href="javascript:void(0);" class="btn btn-light-brand" data-bs-toggle="dropdown" data-bs-auto-close="outside"> Mega Menu </a> -->
+                            <div class="dropdown-menu nxl-h-dropdown" id="mega-menu-dropdown">
+                                <div class="d-lg-flex align-items-start">
+                                </div>
+                            </div>
+                        </div>
+                        <!--! [End] nxl-h-item nxl-mega-menu !-->
+                    </div>
+                    <!--! [End] nxl-lavel-mega-menu-wrapper !-->
+                </div>
+                <!--! [End] nxl-lavel-mega-menu !-->
+            </div>
+            <!--! [End] Header Left !-->
+            <!--! [Start] Header Right !-->
+            <div class="header-right ms-auto">
+                <div class="d-flex align-items-center">
+
+                    <!-- Full Screen Switcher -->
+                    <!-- <div class="nxl-h-item d-none d-sm-flex">
+                        <div class="full-screen-switcher">
+                            <a href="javascript:void(0);" class="nxl-head-link me-0"
+                                onclick="$('body').fullScreenHelper('toggle');">
+                                <i class="feather-maximize maximize"></i>
+                                <i class="feather-minimize minimize"></i>
+                            </a>
+                        </div>
+                    </div> -->
+
+                    <!-- Dark/Light Theme Toggle -->
+                    <!-- <div class="nxl-h-item dark-light-theme">
+                        <a href="javascript:void(0);" class="nxl-head-link me-0 dark-button">
+                            <i class="feather-moon"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="nxl-head-link me-0 light-button" style="display: none">
+                            <i class="feather-sun"></i>
+                        </a>
+                    </div> -->
+
+                    <!-- User Dropdown -->
+                    <div class="dropdown nxl-h-item">
+                        <a href="javascript:void(0);" data-bs-toggle="dropdown" role="button"
+                            data-bs-auto-close="outside">
+                            <div class="avatar-text avatar-lg bg-gray-200">
+                                <i class="feather-user"></i>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-user-dropdown">
+                            <div class="dropdown-header">
+
+                                <section id="user-header">
+                                    <div id="user-section" class="user-dropdown"></div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--! [End] Header Right !-->
+        </div>
+    </header>
+    <!--! ================================================================ !-->
+    <!--! [End] Header !-->
+
+
+    <!-- ===============>> account start here <<================= -->
+<section class="account padding-top padding-bottom sec-bg-color2">
+  <div class="container">
+    <div class="account__wrapper" data-aos="fade-up" data-aos-duration="800">
+      <div class="row g-4">
+        <div class="col-12">
+          <div class="account__content account__content--style1">
+
+            <!-- account title -->
+            <div class="account__header">
+              <h2>Register Your Organization</h2>
+              <p>Fill in the details below to register your organization.</p>
+            </div>
+
+            <!-- account form -->
+            <form id="registerForm" class="account__form needs-validation" novalidate>
+              <div class="row g-4">
+
+                <!-- User Info -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label">First Name</label>
+                  <input class="form-control" type="text" id="first-name" placeholder="Enter first name" required>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label">Last Name</label>
+                  <input class="form-control" type="text" id="last-name" placeholder="Enter last name" required>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label">Mobile</label>
+                  <input class="form-control" type="text" id="mobile" placeholder="Enter mobile number" required>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label">Email</label>
+                  <input class="form-control" type="email" id="account-email" placeholder="Enter email" required>
+                </div>
+
+                <!-- Organization Info -->
+                <div class="col-12">
+                  <label class="form-label">Organization Name</label>
+                  <input class="form-control" type="text" id="org-name" placeholder="Enter organization name" required>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label">Website</label>
+                  <input class="form-control" type="text" id="org-website" placeholder="Enter website URL">
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label">Address</label>
+                  <input class="form-control" type="text" id="org-address" placeholder="Enter address">
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label">Purpose</label>
+                  <input class="form-control" type="text" id="org-purpose" placeholder="Enter purpose">
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label">Mission</label>
+                  <input class="form-control" type="text" id="org-mission" placeholder="Enter mission">
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label">Category</label>
+                  <input class="form-control" type="text" id="org-category" placeholder="Enter category (e.g., NGO)">
+                </div>
+
+                <!-- Bank Info -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label">Bank Name</label>
+                  <input class="form-control" type="text" id="bank-name" placeholder="Enter bank name">
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label">Account Number</label>
+                  <input class="form-control" type="text" id="account-number" placeholder="Enter account number">
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label">IFSC Code</label>
+                  <input class="form-control" type="text" id="ifsc-code" placeholder="Enter IFSC code">
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label">Branch Name</label>
+                  <input class="form-control" type="text" id="branch-name" placeholder="Enter branch name">
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label">GST Number</label>
+                  <input class="form-control" type="text" id="gst-number" placeholder="Enter GST number">
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label">Registration Number</label>
+                  <input class="form-control" type="text" id="registration-number" placeholder="Enter registration number">
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label">Tax Exemption Status</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="tax-status">
+                    <label class="form-check-label" for="tax-status">Exempted</label>
+                  </div>
+                </div>
+
+                <!-- Contact Person -->
+                <div class="col-12 col-md-4">
+                  <label class="form-label">Contact Person Name</label>
+                  <input class="form-control" type="text" id="contact-person-name" placeholder="Enter name">
+                </div>
+
+                <div class="col-12 col-md-4">
+                  <label class="form-label">Contact Person Email</label>
+                  <input class="form-control" type="email" id="contact-person-email" placeholder="Enter email">
+                </div>
+
+                <div class="col-12 col-md-4">
+                  <label class="form-label">Contact Person Phone</label>
+                  <input class="form-control" type="text" id="contact-person-phone" placeholder="Enter phone">
+                </div>
+
+                <!-- Bank Passbook Upload -->
+                <div class="col-12">
+                  <label class="form-label">Bank Passbook (PDF/JPG/PNG)</label>
+                  <input class="form-control" type="file" id="bank-passbook" accept=".pdf,.jpg,.png">
+                </div>
+
+              </div>
+
+              <button type="submit" class="trk-btn trk-btn--border trk-btn--primary d-block mt-4">
+                Register Organization
+              </button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ <!--! BEGIN: Vendors JS !-->
+    <script src="./../assets/vendors/js/vendors.min.js"></script>
+    <!-- vendors.min.js {always must need to be top} -->
+    <script src="./../assets/vendors/js/daterangepicker.min.js"></script>
+    <script src="./../assets/vendors/js/apexcharts.min.js"></script>
+    <script src="./../assets/vendors/js/circle-progress.min.js"></script>
+    <script src="./../assets/vendors/js/jquery.calendar.min.js"></script>
+    <script src="./../assets/vendors/js/select2.min.js"></script>
+    <script src="./../assets/vendors/js/select2-active.min.js"></script>
+    <script src="./../assets/js/common-init.min.js"></script>
+    <script src="./../assets/vendors/js/lslstrength.min.js"></script>
+    <!--! END: Vendors JS !-->
+    <!--! BEGIN: Apps Init  !-->
+    <script src="./../assets/js/common-init.min.js"></script>
+    <script src="./../assets/js/reports-project-init.min.js"></script>
+    <script src="./../assets/js/widgets-charts-init.min.js"></script>
+    <script src="./../assets/js/widgets-miscellaneous-init.min.js"></script>
+    <!--! END: Apps Init !-->
+    <!--! BEGIN: Theme Customizer  !-->
+    <script src="./../assets/js/theme-customizer-init.min.js"></script>
+    <!--! END: Theme Customizer !-->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script>
+$(document).ready(function () {
+
+    // Get userId from sessionStorage
+    const userId = sessionStorage.getItem("userId");
+    if (!userId) {
+        Swal.fire({
+            icon: "error",
+            title: "Not Logged In",
+            text: "Please login first to register your organization."
+        });
+        return;
+    }
+
+    // Handle form submission
+    $("#registerForm").on("submit", function (e) {
+        e.preventDefault();
+
+        // Collect all form values
+        const name = $("#first-name").val() + " " + $("#last-name").val();
+        const email = $("#account-email").val();
+        const phone = $("#mobile").val();
+        const website = $("#org-website")?.val() || ""; // optional, add input in form
+        const address = $("#org-address")?.val() || "";
+        const purpose = $("#org-purpose")?.val() || "";
+        const mission = $("#org-mission")?.val() || "";
+        const category = $("#org-category")?.val() || "";
+        const bank_name = $("#bank-name")?.val() || "";
+        const account_number = $("#account-number")?.val() || "";
+        const ifsc_code = $("#ifsc-code")?.val() || "";
+        const branch_name = $("#branch-name")?.val() || "";
+        const gst_number = $("#gst-number")?.val() || "";
+        const registration_number = $("#registration-number")?.val() || "";
+        const tax_exemption_status = $("#tax-status")?.is(":checked") ? "true" : "false";
+        const contact_person_name = $("#contact-person-name")?.val() || "";
+        const contact_person_email = $("#contact-person-email")?.val() || "";
+        const contact_person_phone = $("#contact-person-phone")?.val() || "";
+        const bank_passbook_pic = $("#bank-passbook")[0]?.files[0]; // file input
+
+        // Validate required fields
+        if (!name || !email || !phone) {
+            Swal.fire({
+                icon: "warning",
+                title: "Missing Information",
+                text: "Please fill in all required fields."
+            });
+            return;
+        }
+
+        // Build FormData
+        const formData = new FormData();
+        formData.append("userId", userId);
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("phone", phone);
+        formData.append("website", website);
+        formData.append("address", address);
+        formData.append("purpose", purpose);
+        formData.append("mission", mission);
+        formData.append("category", category);
+        formData.append("bank_name", bank_name);
+        formData.append("account_number", account_number);
+        formData.append("ifsc_code", ifsc_code);
+        formData.append("branch_name", branch_name);
+        formData.append("gst_number", gst_number);
+        formData.append("registration_number", registration_number);
+        formData.append("tax_exemption_status", tax_exemption_status);
+        formData.append("contact_person_name", contact_person_name);
+        formData.append("contact_person_email", contact_person_email);
+        formData.append("contact_person_phone", contact_person_phone);
+        if (bank_passbook_pic) {
+            formData.append("bank_passbook_pic", bank_passbook_pic);
+        }
+
+        // Submit via AJAX
+        Swal.fire({
+            title: "Registering Organization...",
+            text: "Please wait...",
+            allowOutsideClick: false,
+            didOpen: () => Swal.showLoading()
+        });
+
+        $.ajax({
+            url: "http://100.48.222.142:3000/api/v1/organisation/add",
+            type: "POST",
+            data: formData,
+            processData: false, // important for FormData
+            contentType: false, // important for FormData
+            success: function (response) {
+                Swal.fire({
+                    icon: "success",
+                    title: "Organization Registered!",
+                    text: response.message || "Your organization has been successfully registered.",
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+
+                // Optionally reset the form
+                $("#registerForm")[0].reset();
+            },
+            error: function (xhr) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Registration Failed",
+                    text: xhr.responseJSON?.message || "Something went wrong. Please try again."
+                });
+            }
+        });
+    });
+});
+</script>
+</body>
