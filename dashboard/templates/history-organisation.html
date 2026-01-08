@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="keyword" content="" />
+    <meta name="author" content="Fundsroom" />
+    <!--! The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags !-->
+    <!--! BEGIN: Apps Title-->
+    <title></title>
+    <!--! END:  Apps Title-->
+    <!--! BEGIN: Favicon-->
+    <link rel="shortcut icon" type="image/x-icon" href="" />
+    <!--! END: Favicon-->
+    <!--! BEGIN: Bootstrap CSS-->
+    <link rel="stylesheet" type="text/css" href="./../assets/css/bootstrap.min.css" />
+    <!--! END: Bootstrap CSS-->
+    <!--! BEGIN: Vendors CSS-->
+    <link rel="stylesheet" type="text/css" href="./../assets/vendors/css/vendors.min.css" />
+    <link rel="stylesheet" type="text/css" href="./../assets/vendors/css/daterangepicker.min.css" />
+    <!--! END: Vendors CSS-->
+    <!--! BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="./../assets/css/theme.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./../assets/vendors/css/tagify.min.css">
+    <link rel="stylesheet" type="text/css" href="./../assets/vendors/css/tagify-data.min.css">
+    <link rel="stylesheet" type="text/css" href="./../assets/vendors/css/quill.min.css">
+    <link rel="stylesheet" type="text/css" href="./../assets/vendors/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="./../assets/vendors/css/select2-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="./../assets/vendors/css/daterangepicker.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="./../assets/css/theme.min.css" />
+    <!--! END: Custom CSS-->
+    <!--! HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries !-->
+    <!--! WARNING: Respond.js doesn"t work if you view the page via file: !-->
+    <!--[if lt IE 9]>
+			<script src="https:oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https:oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+    <!--! ================================================================ !-->
+    <!--! [Start] Navigation Manu !-->
+    <!--! ================================================================ !-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <nav class="nxl-navigation">
+        <div class="navbar-wrapper">
+            <div class="m-header">
+                <!-- <a href="index.html" class="b-brand">
+                    <img src="./../assets/images/FundsAuditText.png" alt="" class="logo logo-lg" />
+                    <img src="./../assets/images/FundsAuditLogo.png" alt="" class="logo logo-sm" />
+                </a> -->
+            </div>
+            <div class="navbar-content">
+                <ul class="nxl-navbar">
+                    <li class="nxl-item nxl-caption">
+                        <label>Navigation</label>
+                    </li>
+                    <li class="nxl-item">
+                        <a href="profile.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-user"></i></span>
+                            <span class="nxl-mtext">My Profile</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+                    <li class="nxl-item">
+                        <a href="kyc.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-user-check"></i></span>
+                            <span class="nxl-mtext">KYC Verification</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+                    <li class="nxl-item">
+                        <a href="wallet.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-briefcase"></i></span>
+                            <span class="nxl-mtext">Create Wallet</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+                    <li class="nxl-item">
+                        <a href="wallet-verification.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-user-check"></i></span>
+                            <span class="nxl-mtext">Wallet Verification</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+                    <li class="nxl-item">
+                        <a href="did-verification.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-user-check"></i></span>
+                            <span class="nxl-mtext">DID Verification</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+
+                    <!-- <li class="nxl-item">
+                        <a href="targets.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-activity"></i></span>
+                            <span class="nxl-mtext">My Targets</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li> -->
+                    <!-- <li class="nxl-item">
+                        <a href="A.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-user-plus"></i></span>
+                            <span class="nxl-mtext">A (Attract)</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+                    <li class="nxl-item">
+                        <a href="I.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-share-2"></i></span>
+                            <span class="nxl-mtext">I (Interact)</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+                    <li class="nxl-item">
+                        <a href="M.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-file-text"></i></span>
+                            <span class="nxl-mtext">M (Manage)</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li> -->
+                    <!-- <li class="nxl-item">
+                        <a href="I.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-briefcase"></i></span>
+                            <span class="nxl-mtext">I (Interview)</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+                    <li class="nxl-item">
+                        <a href="S.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-check-circle"></i></span>
+                            <span class="nxl-mtext">S (Selection)</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+                    <li class="nxl-item">
+                        <a href="K.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-flag"></i></span>
+                            <span class="nxl-mtext">K (Kick off)</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li> -->
+
+                    <!-- <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-airplay"></i></span>
+                            <span class="nxl-mtext">Dashboard</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
+                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a class="nxl-link" href="CO.html">CO (Connect)</a></li>
+                            <li class="nxl-item"><a class="nxl-link" href="RE.html">RE (Reach)</a></li>
+                            <li class="nxl-item"><a class="nxl-link" href="RE.html">R (Resume)</a></li>
+                            <li class="nxl-item"><a class="nxl-link" href="RE.html">I (Interview)</a></li>
+                            <li class="nxl-item"><a class="nxl-link" href="RE.html">S (Selection)</a></li>
+                            <li class="nxl-item"><a class="nxl-link" href="RE.html">K (Kick off)</a></li>
+                        </ul>
+                    </li> -->
+                    <!-- <li class="nxl-item">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-bar-chart-2"></i></span>
+                            <span class="nxl-mtext">My Performance</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li> -->
+                    <li class="nxl-item">
+                        <a href="javascript:void(0);" class="nxl-link" id="logoutBtn">
+                            <span class="nxl-micon"><i class="feather-log-out"></i></span>
+                            <span class="nxl-mtext">Logout</span>
+                            <span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
+
+                    <!-- Admin Page Link (Hidden by Default) -->
+                    <li class="nxl-item nxl-hasmenu" id="adminPageLink" style="display: none;">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-settings"></i></span>
+                            <span class="nxl-mtext">Admin Page</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
+                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a class="nxl-link" href="admin.html">Dashboard Analysis - Edit</a>
+                            </li>
+                            <li class="nxl-item"><a class="nxl-link" href="analysis-edit.html">HR Analysis - Edit</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+    <!--! ================================================================ !-->
+    <!--! [End]  Navigation Manu !-->
+    <!--! ================================================================ !-->
+    <!--! ================================================================ !-->
+    <!--! [Start] Header !-->
+    <!--! ================================================================ !-->
+    <header class="nxl-header">
+        <div class="header-wrapper">
+            <!--! [Start] Header Left !-->
+            <div class="header-left d-flex align-items-center gap-4">
+                <!--! [Start] nxl-head-mobile-toggler !-->
+                <a href="javascript:void(0);" class="nxl-head-mobile-toggler" id="mobile-collapse">
+                    <div class="hamburger hamburger--arrowturn">
+                        <div class="hamburger-box">
+                            <div class="hamburger-inner"></div>
+                        </div>
+                    </div>
+                </a>
+                <!--! [Start] nxl-head-mobile-toggler !-->
+                <!--! [Start] nxl-navigation-toggle !-->
+                <div class="nxl-navigation-toggle">
+                    <a href="javascript:void(0);" id="menu-mini-button">
+                        <i class="feather-align-left"></i>
+                    </a>
+                    <a href="javascript:void(0);" id="menu-expend-button" style="display: none">
+                        <i class="feather-arrow-right"></i>
+                    </a>
+                </div>
+                <!--! [End] nxl-navigation-toggle !-->
+                <!--! [Start] nxl-lavel-mega-menu-toggle !-->
+                <!-- <div class="nxl-lavel-mega-menu-toggle d-flex d-lg-none">
+                    <a href="javascript:void(0);" id="nxl-lavel-mega-menu-open">
+                        <i class="feather-align-left"></i>
+                    </a>
+                </div> -->
+                <!--! [End] nxl-lavel-mega-menu-toggle !-->
+                <!--! [Start] nxl-lavel-mega-menu !-->
+                <div class="nxl-drp-link nxl-lavel-mega-menu">
+                    <div class="nxl-lavel-mega-menu-toggle d-flex d-lg-none">
+                        <a href="javascript:void(0)" id="nxl-lavel-mega-menu-hide">
+                            <i class="feather-arrow-left me-2"></i>
+                            <span>Back</span>
+                        </a>
+                    </div>
+                    <!--! [Start] nxl-lavel-mega-menu-wrapper !-->
+                    <div class="nxl-lavel-mega-menu-wrapper d-flex gap-3">
+                        <!--! [Start] nxl-h-item nxl-mega-menu !-->
+                        <div class="dropdown nxl-h-item nxl-mega-menu">
+                            <!-- <a href="javascript:void(0);" class="btn btn-light-brand" data-bs-toggle="dropdown" data-bs-auto-close="outside"> Mega Menu </a> -->
+                            <div class="dropdown-menu nxl-h-dropdown" id="mega-menu-dropdown">
+                                <div class="d-lg-flex align-items-start">
+                                </div>
+                            </div>
+                        </div>
+                        <!--! [End] nxl-h-item nxl-mega-menu !-->
+                    </div>
+                    <!--! [End] nxl-lavel-mega-menu-wrapper !-->
+                </div>
+                <!--! [End] nxl-lavel-mega-menu !-->
+            </div>
+            <!--! [End] Header Left !-->
+            <!--! [Start] Header Right !-->
+            <div class="header-right ms-auto">
+                <div class="d-flex align-items-center">
+
+                    <!-- Full Screen Switcher -->
+                    <!-- <div class="nxl-h-item d-none d-sm-flex">
+                        <div class="full-screen-switcher">
+                            <a href="javascript:void(0);" class="nxl-head-link me-0"
+                                onclick="$('body').fullScreenHelper('toggle');">
+                                <i class="feather-maximize maximize"></i>
+                                <i class="feather-minimize minimize"></i>
+                            </a>
+                        </div>
+                    </div> -->
+
+                    <!-- Dark/Light Theme Toggle -->
+                    <!-- <div class="nxl-h-item dark-light-theme">
+                        <a href="javascript:void(0);" class="nxl-head-link me-0 dark-button">
+                            <i class="feather-moon"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="nxl-head-link me-0 light-button" style="display: none">
+                            <i class="feather-sun"></i>
+                        </a>
+                    </div> -->
+
+                    <!-- User Dropdown -->
+                    <div class="dropdown nxl-h-item">
+                        <a href="javascript:void(0);" data-bs-toggle="dropdown" role="button"
+                            data-bs-auto-close="outside">
+                            <div class="avatar-text avatar-lg bg-gray-200">
+                                <i class="feather-user"></i>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-user-dropdown">
+                            <div class="dropdown-header">
+
+                                <section id="user-header">
+                                    <div id="user-section" class="user-dropdown"></div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--! [End] Header Right !-->
+        </div>
+    </header>
+
+
+    <main class="nxl-container">
+  <div class="main-content">
+    <div class="row justify-content-center">
+      <div class="col-xl-12">
+        <div class="card m-4">
+          <div class="card-body">
+
+            <h4 class="mb-4">🏢 Donations Received</h4>
+
+            <div class="table-responsive">
+              <table class="table table-bordered align-middle">
+                <thead class="table-light">
+                  <tr>
+                    <th>#</th>
+                    <th>Donor</th>
+                    <th>Split Amount</th>
+                    <th>Split Message</th>
+                    <th>Total Donation</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody id="orgTable">
+                  <tr>
+                    <td colspan="7" class="text-center">Loading...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<!--! BEGIN: Vendors JS !-->
+    <script src="./../assets/vendors/js/vendors.min.js"></script>
+    <!-- vendors.min.js {always must need to be top} -->
+    <script src="./../assets/vendors/js/daterangepicker.min.js"></script>
+    <script src="./../assets/vendors/js/apexcharts.min.js"></script>
+    <script src="./../assets/vendors/js/circle-progress.min.js"></script>
+    <script src="./../assets/vendors/js/jquery.calendar.min.js"></script>
+    <script src="./../assets/vendors/js/select2.min.js"></script>
+    <script src="./../assets/vendors/js/select2-active.min.js"></script>
+    <script src="./../assets/js/common-init.min.js"></script>
+    <script src="./../assets/vendors/js/lslstrength.min.js"></script>
+    <!--! END: Vendors JS !-->
+    <!--! BEGIN: Apps Init  !-->
+    <script src="./../assets/js/common-init.min.js"></script>
+    <script src="./../assets/js/reports-project-init.min.js"></script>
+    <script src="./../assets/js/widgets-charts-init.min.js"></script>
+    <script src="./../assets/js/widgets-miscellaneous-init.min.js"></script>
+    <!--! END: Apps Init !-->
+    <!--! BEGIN: Theme Customizer  !-->
+    <script src="./../assets/js/theme-customizer-init.min.js"></script>
+    <!--! END: Theme Customizer !-->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+$(document).ready(function () {
+
+  const userId = JSON.parse(sessionStorage.getItem("userId"));
+
+  if (!userId) {
+    window.location.href = "/signin.html";
+    return;
+  }
+
+  $.get(`http://100.48.222.142:3000/api/v1/amount/list/${userId}`, function (res) {
+
+    const tbody = $("#orgTable");
+    tbody.empty();
+
+    if (!res.data || res.data.length === 0) {
+      tbody.append(`<tr><td colspan="7" class="text-center">No records found</td></tr>`);
+      return;
+    }
+
+    res.data.forEach((item, i) => {
+
+      tbody.append(`
+        <tr>
+          <td>${i + 1}</td>
+          <td>
+            <strong>Donor ID:</strong> ${item.donatorId}<br>
+            <small>User ID: ${item.userId}</small>
+          </td>
+          <td class="fw-bold text-success">₹ ${item.amount}</td>
+          <td>${item.DonationSplit.message}</td>
+          <td>₹ ${item.Donation.totalAmount}</td>
+          <td>
+            <span class="badge bg-${item.DonationSplit.status === "completed" ? "success" : "warning"}">
+              ${item.DonationSplit.status}
+            </span>
+          </td>
+          <td>${new Date(item.amountDate).toLocaleDateString()}</td>
+        </tr>
+      `);
+    });
+
+  });
+
+});
+</script>
+
+</body>
+</html>
