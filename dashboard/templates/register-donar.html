@@ -90,6 +90,12 @@
                             <span class="nxl-mtext">DID Verification</span><span class="nxl-arrow"><i></i></span>
                         </a>
                     </li>
+                    <li class="nxl-item">
+                        <a href="link-did.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-user-check"></i></span>
+                            <span class="nxl-mtext">Link DID</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
                     <!-- <li class="nxl-item">
                         <a href="targets.html" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-activity"></i></span>
@@ -509,6 +515,7 @@
                             timer: 2000,
                             showConfirmButton: false
                         });
+                        window.location.href = "/dashboard/templates/donor-list.html";
                         $("#donorForm")[0].reset();
                     },
                     error: function (xhr) {

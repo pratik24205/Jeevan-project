@@ -90,6 +90,12 @@
                             <span class="nxl-mtext">DID Verification</span><span class="nxl-arrow"><i></i></span>
                         </a>
                     </li>
+                    <li class="nxl-item">
+                        <a href="link-did.html" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-user-check"></i></span>
+                            <span class="nxl-mtext">Link DID</span><span class="nxl-arrow"><i></i></span>
+                        </a>
+                    </li>
                     <!-- <li class="nxl-item">
                         <a href="targets.html" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-activity"></i></span>
@@ -296,7 +302,7 @@
     <main class="nxl-container">
         <div class="main-content">
 
-            <section class="account padding-top padding-bottom sec-bg-color2">
+            <section class="account padding-top padding-bottom sec-bg-color2" style="padding: 20px;">
                 <div class="container">
                     <div class="account__wrapper" data-aos="fade-up" data-aos-duration="800">
                         <div class="row g-4">
@@ -597,6 +603,7 @@
                             timer: 2000,
                             showConfirmButton: false
                         });
+                        window.location.href = "/dashboard/templates/organisation-list.html";
 
                         // Optionally reset the form
                         $("#registerForm")[0].reset();

@@ -298,57 +298,63 @@
     </header>
     <!--! ================================================================ !-->
     <!--! [End] Header !-->
-    <!--! ================================================================ !-->
-    <!--! ================================================================ !-->
-    <!--! [Start] Main Content !-->
-    <!--! ================================================================ !-->
+
     <main class="nxl-container">
         <div class="main-content">
-            <div class="row justify-content-center">
-                <div class="col-md-12">
-                    <div class="card text-center p-4" style="margin: 20px;">
-                        <h3 class="fw-bold mb-3">Verify Your DID</h3>
-                        <p class="mb-4" style="opacity: 0.9;">
-                            Click the button to request a verification code via email, then enter it below to verify
-                            your DID.
-                        </p>
 
-                        <!-- Request Code Button -->
-                        <button id="requestDIDBtn" class="btn btn-light fw-bold px-5 py-3 mb-3"
-                            style="border-radius: 50px; font-size: 18px; box-shadow: 0px 4px 15px rgba(0,0,0,0.2);">
-                            <i class="fa-solid fa-envelope me-2"></i> Request Verification Code
-                        </button>
-
-                        <!-- Code Input -->
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="didCode" placeholder="Enter verification code">
+            <div class="col-12" style="padding: 20px">
+                <div id="donors-container" class="row g-3">
+                    <!-- Loading message for donors -->
+                    <div class="col-12">
+                        <div class="spinner-container">
+                            <div class="text-center">
+                                <div class="spinner-border text-success" role="status">
+                                    <span class="visually-hidden">Loading donors...</span>
+                                </div>
+                                <p class="mt-2 text-muted">Loading donors...</p>
+                            </div>
                         </div>
-
-                        <!-- Verify Button -->
-                        <button id="verifyDIDBtn" class="btn btn-primary fw-bold px-5 py-3"
-                            style="border-radius: 50px; font-size: 18px;">
-                            Verify DID
-                        </button>
                     </div>
                 </div>
+                <style>
+                    .organization-card {
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+
+                    .organization-card:hover {
+                        transform: translateY(-5px);
+                        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                    }
+
+                    .card-title {
+                        color: #2c3e50;
+                        border-bottom: 2px solid #3498db;
+                        padding-bottom: 10px;
+                        margin-bottom: 15px;
+                    }
+
+                    .organization-details p {
+                        margin-bottom: 8px;
+                        color: #555;
+                    }
+
+                    .organization-details strong {
+                        color: #2c3e50;
+                        min-width: 70px;
+                        display: inline-block;
+                    }
+                </style>
+
+                <!-- [ Main Content ] end -->
             </div>
-        </div>
+            <!-- [ Footer ] end -->
     </main>
 
 
-    <!--! ================================================================ !-->
-    <!--! [End] Main Content !-->
-    <!--! ================================================================ !-->
-    <!--! ================================================================ !-->
-    <!--! BEGIN: Theme Customizer !-->
-    <!--! ================================================================ !-->
+    <!-- ===============>> account start here <<================= -->
 
-    <!--! ================================================================ !-->
-    <!--! [End] Theme Customizer !-->
-    <!--! ================================================================ !-->
-    <!--! ================================================================ !-->
-    <!--! Footer Script !-->
-    <!--! ================================================================ !-->
+
+
     <!--! BEGIN: Vendors JS !-->
     <script src="./../assets/vendors/js/vendors.min.js"></script>
     <!-- vendors.min.js {always must need to be top} -->
@@ -370,119 +376,181 @@
     <!--! BEGIN: Theme Customizer  !-->
     <script src="./../assets/js/theme-customizer-init.min.js"></script>
     <!--! END: Theme Customizer !-->
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
     <script>
-        $(document).ready(function () {
-            const did = sessionStorage.getItem("did");
-            const walletAddress = sessionStorage.getItem("walletAddress");
-            console.log("did:", did);
-            console.log("walletAddress:", walletAddress);
+        // Configuration
+        const API_BASE_URL = 'http://100.48.222.142:3000/api/v1';
+        const ORGANIZATION_API = `${API_BASE_URL}/organisation/list`;
+        const DONOR_API = `${API_BASE_URL}/donator/list`;
 
-            const userId = sessionStorage.getItem("userId");
+        // Utility function to escape HTML
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
 
-            if (!userId) {
-                Swal.fire({
-                    icon: "error",
-                    title: "User Not Logged In",
-                    text: "Please login again to continue."
-                });
-                return;
-            }
+        // Function to create organization card
+        function createOrganizationCard(org) {
+            return `
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 data-card organization-card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-building me-2"></i>${escapeHtml(org.name || 'Unnamed Organization')}
+                            </h5>
+                            <div class="detail-item">
+                                <strong><i class="bi bi-envelope me-1"></i>Email:</strong> ${escapeHtml(org.email || 'N/A')}
+                            </div>
+                            <div class="detail-item">
+                                <strong><i class="bi bi-telephone me-1"></i>Phone:</strong> ${escapeHtml(org.phone || 'N/A')}
+                            </div>
+                            <div class="detail-item">
+                                <strong><i class="bi bi-geo-alt me-1"></i>Address:</strong> ${escapeHtml(org.address || 'N/A')}
+                            </div>
+                            ${org.purpose ? `
+                                <div class="detail-item">
+                                    <strong><i class="bi bi-bullseye me-1"></i>Purpose:</strong> ${escapeHtml(org.purpose)}
+                                </div>
+                            ` : ''}
+                            ${org.category ? `
+                                <div class="mt-3">
+                                    <span class="badge bg-info">${escapeHtml(org.category)}</span>
+                                    ${org.tax_exemption_status ? '<span class="badge bg-success ms-1">Tax Exempt</span>' : ''}
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
 
-            // Request DID Code
-            $("#requestDIDBtn").on("click", function () {
-                Swal.fire({
-                    title: "Requesting Code...",
-                    text: "Please wait while we send the code to your email.",
-                    allowOutsideClick: false,
-                    didOpen: () => Swal.showLoading()
-                });
+        // Function to create donor card
+        function createDonorCard(donor) {
+            const userName = donor.User?.name || 'Unknown Donor';
+            const userEmail = donor.User?.email || donor.email || 'N/A';
 
-                $.ajax({
-                    url: "http://100.48.222.142:3000/api/v1/did/did/request-code",
-                    type: "POST",
-                    contentType: "application/json",
-                    data: JSON.stringify({ userId }),
-
-                    success: function (response) {
-                        console.log("response1:",response);
-                        Swal.fire({
-                            icon: "success",
-                            title: "Code Sent!",
-                            text: response.message || "Check your email for the verification code.",
-                            timer: 2000,
-                            showConfirmButton: false
-                        });
-                    },
-
-                    error: function (xhr) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Request Failed",
-                            text: xhr.responseJSON?.message || "Could not request verification code."
-                        });
-                    }
-                });
-            });
-
-            // Verify DID Code
-            $("#verifyDIDBtn").on("click", function () {
-                const code = $("#didCode").val().trim();
-
-                if (!code) {
-                    Swal.fire({
-                        icon: "warning",
-                        title: "Missing Code",
-                        text: "Please enter the verification code sent to your email."
-                    });
-                    return;
+            return `
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 data-card donor-card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-person-circle me-2"></i>${escapeHtml(userName)}
+                            </h5>
+                            <div class="detail-item">
+                                <strong><i class="bi bi-envelope me-1"></i>Email:</strong> ${escapeHtml(userEmail)}
+                            </div>
+                            <div class="detail-item">
+                                <strong><i class="bi bi-telephone me-1"></i>Phone:</strong> ${escapeHtml(donor.phone_number || 'N/A')}
+                            </div>
+                            <div class="detail-item">
+                                <strong><i class="bi bi-geo-alt me-1"></i>Address:</strong> ${escapeHtml(donor.address || 'N/A')}
+                            </div>
+                            <div class="detail-item">
+                                <strong><i class="bi bi-briefcase me-1"></i>Designation:</strong> ${escapeHtml(donor.designation || 'N/A')}
+                            </div>
+                            <div class="mt-3">
+                                ${donor.isVerified ?
+                    '<span class="badge bg-success badge-status">Verified</span>' :
+                    '<span class="badge bg-warning badge-status">Pending Verification</span>'
                 }
+                                ${donor.isFlagged ?
+                    '<span class="badge bg-danger badge-status ms-1">Flagged</span>' : ''
+                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
 
-                Swal.fire({
-                    title: "Verifying DID...",
-                    text: "Please wait...",
-                    allowOutsideClick: false,
-                    didOpen: () => Swal.showLoading()
-                });
+        // Function to show no data message
+        function showNoDataMessage(containerId, message, icon = 'info-circle') {
+            const container = document.getElementById(containerId);
+            container.innerHTML = `
+                <div class="col-12">
+                    <div class="alert alert-info text-center" role="alert">
+                        <i class="bi bi-${icon} me-2"></i>${message}
+                    </div>
+                </div>
+            `;
+        }
 
-                $.ajax({
-                    url: "http://100.48.222.142:3000/api/v1/did/did/verify",
-                    type: "POST",
-                    contentType: "application/json",
-                    data: JSON.stringify({ userId, code }),
+        // Function to show error message
+        function showErrorMessage(containerId, message) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = `
+                <div class="col-12">
+                    <div class="alert alert-danger text-center" role="alert">
+                        <i class="bi bi-exclamation-triangle me-2"></i>${message}
+                    </div>
+                </div>
+            `;
+        }
 
-                    success: function (response) {
-                        console.log("response2:",response);
+        // Function to load organizations
+        async function loadOrganizations() {
+            const container = document.getElementById('organizations-container');
 
-                        const did = response.data.did;
-                        sessionStorage.setItem("did", did);
-                        console.log("did:", did);
-                        Swal.fire({
-                            icon: "success",
-                            title: "DID Verified!",
-                            text: response.message || "Your DID is now successfully verified.",
-                            timer: 1500,
-                            showConfirmButton: false
-                        });
+            try {
+                const response = await fetch(ORGANIZATION_API);
+                const result = await response.json();
 
-                        // setTimeout(() => {
-                        //     window.location.href = "/dashboard/templates/profile.html";
-                        // }, 1600);
-                    },
-
-                    error: function (xhr) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Verification Failed",
-                            text: xhr.responseJSON?.message || "Invalid verification code."
-                        });
+                if (result.success && result.data && Array.isArray(result.data)) {
+                    if (result.data.length > 0) {
+                        container.innerHTML = result.data.map(createOrganizationCard).join('');
+                    } else {
+                        showNoDataMessage('organizations-container', 'No organizations found. Be the first to register!', 'building');
                     }
-                });
-            });
+                } else {
+                    showErrorMessage('organizations-container', 'Failed to load organizations. Please try again later.');
+                }
+            } catch (error) {
+                console.error('Error loading organizations:', error);
+                showErrorMessage('organizations-container', 'Failed to connect to server. Please check your connection.');
+            }
+        }
 
-        });
+        // Function to load donors
+        async function loadDonors() {
+            const container = document.getElementById('donors-container');
+
+            try {
+                const response = await fetch(DONOR_API);
+                const result = await response.json();
+
+                if (result.success && result.data && Array.isArray(result.data)) {
+                    if (result.data.length > 0) {
+                        container.innerHTML = result.data.map(createDonorCard).join('');
+                    } else {
+                        showNoDataMessage('donors-container', 'No donors found yet. Be the first to register!', 'person');
+                    }
+                } else {
+                    showErrorMessage('donors-container', 'Failed to load donors. Please try again later.');
+                }
+            } catch (error) {
+                console.error('Error loading donors:', error);
+                showErrorMessage('donors-container', 'Failed to connect to server. Please check your connection.');
+            }
+        }
+
+        // Function to load all data
+        async function loadAllData() {
+            await Promise.all([
+                loadOrganizations(),
+                loadDonors()
+            ]);
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', loadAllData);
+
+        // Optional: Auto-refresh every 60 seconds
+        // setInterval(loadAllData, 60000);
     </script>
 </body>
-
-</html>
