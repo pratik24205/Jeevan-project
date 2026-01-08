@@ -90,7 +90,7 @@
                             <span class="nxl-mtext">DID Verification</span><span class="nxl-arrow"><i></i></span>
                         </a>
                     </li>
-    
+
                     <!-- <li class="nxl-item">
                         <a href="targets.html" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-activity"></i></span>
@@ -296,71 +296,85 @@
 
 
     <!-- ===============>> account start here <<================= -->
-<section class="account padding-top padding-bottom sec-bg-color2">
-  <div class="container">
-    <div class="account__wrapper" data-aos="fade-up" data-aos-duration="800">
-      <div class="row g-4">
-        <div class="col-12">
-          <div class="account__content account__content--style1">
+    <main class="nxl-container">
+        <div class="main-content">
+            <div class="col-xl-12">
+                <section class="account padding-top padding-bottom sec-bg-color2" style="padding: 20px;">
+                    <div class="container">
+                        <div class="account__wrapper" data-aos="fade-up" data-aos-duration="800">
+                            <div class="row g-4">
+                                <div class="col-12">
+                                    <div class="account__content account__content--style1">
 
-            <!-- Account title -->
-            <div class="account__header">
-              <h2>Create a Donation</h2>
-              <p>Fill in the details and schedule your donation installments.</p>
-            </div>
+                                        <!-- Account title -->
+                                        <div class="account__header">
+                                            <h2>Create a Donation</h2>
+                                            <p>Fill in the details and schedule your donation installments.</p>
+                                        </div>
 
-            <!-- Donation Form -->
-            <form id="donationForm" class="account__form needs-validation" novalidate>
-              <div class="row g-3">
+                                        <!-- Donation Form -->
+                                        <form id="donationForm" class="account__form needs-validation" novalidate>
+                                            <div class="row g-3">
 
-                <div class="col-md-6">
-                  <label class="form-label">Organization Name</label>
-                  <input type="text" class="form-control" id="donation-org-name" placeholder="Organization Name" required>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Organization Name</label>
+                                                    <input type="text" class="form-control" id="donation-org-name"
+                                                        placeholder="Organization Name" required>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Total Amount</label>
+                                                    <input type="number" class="form-control" id="donation-total"
+                                                        placeholder="Total Amount" required>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Contact Person Name</label>
+                                                    <input type="text" class="form-control" id="donation-contact-name"
+                                                        placeholder="Name" required>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Contact Person Email</label>
+                                                    <input type="email" class="form-control" id="donation-contact-email"
+                                                        placeholder="Email" required>
+                                                </div>
+
+                                                <hr class="my-3">
+
+                                                <h5>Donation Splits</h5>
+                                                <div id="splits-container"></div>
+
+                                                <button type="button" id="addSplitBtn" class="btn btn-secondary mb-3">
+                                                    + Add Split
+                                                </button>
+
+                                            </div>
+
+                                            <div class="text-center mt-3">
+                                                <button type="submit"
+                                                    class="trk-btn trk-btn--border trk-btn--primary d-block">
+                                                    Create Donation
+                                                </button>
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </section>
 
-                <div class="col-md-6">
-                  <label class="form-label">Total Amount</label>
-                  <input type="number" class="form-control" id="donation-total" placeholder="Total Amount" required>
-                </div>
-
-                <div class="col-md-6">
-                  <label class="form-label">Contact Person Name</label>
-                  <input type="text" class="form-control" id="donation-contact-name" placeholder="Name" required>
-                </div>
-
-                <div class="col-md-6">
-                  <label class="form-label">Contact Person Email</label>
-                  <input type="email" class="form-control" id="donation-contact-email" placeholder="Email" required>
-                </div>
-
-                <hr class="my-3">
-
-                <h5>Donation Splits</h5>
-                <div id="splits-container"></div>
-
-                <button type="button" id="addSplitBtn" class="btn btn-secondary mb-3">
-                  + Add Split
-                </button>
-
-              </div>
-
-              <div class="text-center mt-3">
-                <button type="submit" class="trk-btn trk-btn--border trk-btn--primary d-block">
-                  Create Donation
-                </button>
-              </div>
-
-            </form>
-
-          </div>
+            <!-- [ Main Content ] end -->
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- [ Footer ] end -->
+    </main>
 
 
- <!--! BEGIN: Vendors JS !-->
+    <!--! BEGIN: Vendors JS !-->
     <script src="./../assets/vendors/js/vendors.min.js"></script>
     <!-- vendors.min.js {always must need to be top} -->
     <script src="./../assets/vendors/js/daterangepicker.min.js"></script>
@@ -385,24 +399,24 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
-$(document).ready(function() {
-    const userId = sessionStorage.getItem("userId");
-    if (!userId) {
-        Swal.fire({
-            icon: "error",
-            title: "Not Logged In",
-            text: "Please login first to create a donation."
-        });
-        return;
-    }
+    <script>
+        $(document).ready(function () {
+            const userId = sessionStorage.getItem("userId");
+            if (!userId) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Not Logged In",
+                    text: "Please login first to create a donation."
+                });
+                return;
+            }
 
-    let splitCount = 0;
+            let splitCount = 0;
 
-    // Function to add a split row
-    function addSplitRow(splitData = {}) {
-        splitCount++;
-        const html = `
+            // Function to add a split row
+            function addSplitRow(splitData = {}) {
+                splitCount++;
+                const html = `
             <div class="split-row border p-3 mb-2" data-split-id="${splitCount}">
                 <div class="row g-2 align-items-end">
                     <div class="col-md-3">
@@ -423,88 +437,89 @@ $(document).ready(function() {
                 </div>
             </div>
         `;
-        $("#splits-container").append(html);
-    }
-
-    // Add initial split row
-    addSplitRow();
-
-    // Add new split row on button click
-    $("#addSplitBtn").on("click", function() {
-        addSplitRow();
-    });
-
-    // Remove split row
-    $(document).on("click", ".remove-split", function() {
-        $(this).closest(".split-row").remove();
-    });
-
-    // Handle form submit
-    $("#donationForm").on("submit", function(e) {
-        e.preventDefault();
-
-        // Collect splits
-        const splits = [];
-        $(".split-row").each(function() {
-            const amount = parseFloat($(this).find(".split-amount").val());
-            const message = $(this).find(".split-message").val();
-            const date = $(this).find(".split-date").val();
-            if (!isNaN(amount) && date) {
-                splits.push({ splitAmount: amount, message: message, transferDate: date });
+                $("#splits-container").append(html);
             }
-        });
 
-        if (splits.length === 0) {
-            Swal.fire({ icon: "warning", title: "Add Splits", text: "Please add at least one split." });
-            return;
-        }
+            // Add initial split row
+            addSplitRow();
 
-        // Prepare donation data
-        const donationData = {
-            userId: userId,
-            organizationName: $("#donation-org-name").val(),
-            totalAmount: parseFloat($("#donation-total").val()),
-            contactPersonName: $("#donation-contact-name").val(),
-            contactPersonEmail: $("#donation-contact-email").val(),
-            splits: splits
-        };
+            // Add new split row on button click
+            $("#addSplitBtn").on("click", function () {
+                addSplitRow();
+            });
 
-        Swal.fire({
-            title: "Creating Donation...",
-            text: "Please wait...",
-            allowOutsideClick: false,
-            didOpen: () => Swal.showLoading()
-        });
+            // Remove split row
+            $(document).on("click", ".remove-split", function () {
+                $(this).closest(".split-row").remove();
+            });
 
-        $.ajax({
-            url: "http://100.48.222.142:3000/api/v1/donation/create",
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify(donationData),
-            success: function(response) {
-                Swal.fire({
-                    icon: "success",
-                    title: "Donation Created!",
-                    text: response.message || "Donation successfully created.",
-                    timer: 2000,
-                    showConfirmButton: false
+            // Handle form submit
+            $("#donationForm").on("submit", function (e) {
+                e.preventDefault();
+
+                // Collect splits
+                const splits = [];
+                $(".split-row").each(function () {
+                    const amount = parseFloat($(this).find(".split-amount").val());
+                    const message = $(this).find(".split-message").val();
+                    const date = $(this).find(".split-date").val();
+                    if (!isNaN(amount) && date) {
+                        splits.push({ splitAmount: amount, message: message, transferDate: date });
+                    }
                 });
-                $("#donationForm")[0].reset();
-                $("#splits-container").empty();
-                addSplitRow(); // Add one empty split again
-            },
-            error: function(xhr) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Donation Failed",
-                    text: xhr.responseJSON?.message || "Something went wrong."
-                });
-            }
-        });
 
-    });
-});
-</script>
+                if (splits.length === 0) {
+                    Swal.fire({ icon: "warning", title: "Add Splits", text: "Please add at least one split." });
+                    return;
+                }
+
+                // Prepare donation data
+                const donationData = {
+                    userId: userId,
+                    organizationName: $("#donation-org-name").val(),
+                    totalAmount: parseFloat($("#donation-total").val()),
+                    contactPersonName: $("#donation-contact-name").val(),
+                    contactPersonEmail: $("#donation-contact-email").val(),
+                    splits: splits
+                };
+
+                Swal.fire({
+                    title: "Creating Donation...",
+                    text: "Please wait...",
+                    allowOutsideClick: false,
+                    didOpen: () => Swal.showLoading()
+                });
+
+                $.ajax({
+                    url: "http://100.48.222.142:3000/api/v1/donation/create",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(donationData),
+                    success: function (response) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Donation Created!",
+                            text: response.message || "Donation successfully created.",
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+                        $("#donationForm")[0].reset();
+                        $("#splits-container").empty();
+                        addSplitRow(); // Add one empty split again
+                    },
+                    error: function (xhr) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Donation Failed",
+                            text: xhr.responseJSON?.message || "Something went wrong."
+                        });
+                    }
+                });
+
+            });
+        });
+    </script>
 
 </body>
+
 </html>

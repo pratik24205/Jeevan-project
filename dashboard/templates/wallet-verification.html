@@ -433,6 +433,10 @@
                     data: JSON.stringify(payload),
 
                     success: function (response) {
+                        console.log("response:", response);
+                        const walletAddress = response.data.walletAddress;
+                        sessionStorage.setItem("walletAddress", walletAddress);
+                        console.log("walletAddress:", walletAddress);
                         Swal.fire({
                             icon: "success",
                             title: "Wallet Verified!",
@@ -440,9 +444,8 @@
                             showConfirmButton: false,
                             timer: 1500
                         });
-
                         setTimeout(() => {
-                            window.location.href = "/dashboard/templates/profile.html";
+                            window.location.href = "/dashboard/templates/did-verification.html";
                         }, 1600);
                     },
 

@@ -296,39 +296,40 @@
     <!--! ================================================================ !-->
     <!--! [Start] Main Content !-->
     <!--! ================================================================ !-->
-  <main class="nxl-container">
-    <div class="main-content">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card text-center p-4" style="margin: 20px;">
-                    <h3 class="fw-bold mb-3">Verify Your DID</h3>
-                    <p class="mb-4" style="opacity: 0.9;">
-                        Click the button to request a verification code via email, then enter it below to verify your DID.
-                    </p>
+    <main class="nxl-container">
+        <div class="main-content">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="card text-center p-4" style="margin: 20px;">
+                        <h3 class="fw-bold mb-3">Verify Your DID</h3>
+                        <p class="mb-4" style="opacity: 0.9;">
+                            Click the button to request a verification code via email, then enter it below to verify
+                            your DID.
+                        </p>
 
-                    <!-- Request Code Button -->
-                    <button id="requestDIDBtn" class="btn btn-light fw-bold px-5 py-3 mb-3"
-                        style="border-radius: 50px; font-size: 18px; box-shadow: 0px 4px 15px rgba(0,0,0,0.2);">
-                        <i class="fa-solid fa-envelope me-2"></i> Request Verification Code
-                    </button>
+                        <!-- Request Code Button -->
+                        <button id="requestDIDBtn" class="btn btn-light fw-bold px-5 py-3 mb-3"
+                            style="border-radius: 50px; font-size: 18px; box-shadow: 0px 4px 15px rgba(0,0,0,0.2);">
+                            <i class="fa-solid fa-envelope me-2"></i> Request Verification Code
+                        </button>
 
-                    <!-- Code Input -->
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="didCode" placeholder="Enter verification code">
+                        <!-- Code Input -->
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="didCode" placeholder="Enter verification code">
+                        </div>
+
+                        <!-- Verify Button -->
+                        <button id="verifyDIDBtn" class="btn btn-primary fw-bold px-5 py-3"
+                            style="border-radius: 50px; font-size: 18px;">
+                            Verify DID
+                        </button>
                     </div>
-
-                    <!-- Verify Button -->
-                    <button id="verifyDIDBtn" class="btn btn-primary fw-bold px-5 py-3"
-                        style="border-radius: 50px; font-size: 18px;">
-                        Verify DID
-                    </button>
                 </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 
-     
+
     <!--! ================================================================ !-->
     <!--! [End] Main Content !-->
     <!--! ================================================================ !-->
@@ -363,109 +364,119 @@
     <!--! BEGIN: Theme Customizer  !-->
     <script src="./../assets/js/theme-customizer-init.min.js"></script>
     <!--! END: Theme Customizer !-->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-   <script>
-$(document).ready(function () {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function () {
+            const did = sessionStorage.getItem("did");
+            const walletAddress = sessionStorage.getItem("walletAddress");
+            console.log("did:", did);
+            console.log("walletAddress:", walletAddress);
 
-    const userId = sessionStorage.getItem("userId");
+            const userId = sessionStorage.getItem("userId");
 
-    if (!userId) {
-        Swal.fire({
-            icon: "error",
-            title: "User Not Logged In",
-            text: "Please login again to continue."
-        });
-        return;
-    }
-
-    // Request DID Code
-    $("#requestDIDBtn").on("click", function () {
-        Swal.fire({
-            title: "Requesting Code...",
-            text: "Please wait while we send the code to your email.",
-            allowOutsideClick: false,
-            didOpen: () => Swal.showLoading()
-        });
-
-        $.ajax({
-            url: "http://100.48.222.142:3000/api/v1/did/did/request-code",
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({ userId }),
-
-            success: function (response) {
-                Swal.fire({
-                    icon: "success",
-                    title: "Code Sent!",
-                    text: response.message || "Check your email for the verification code.",
-                    timer: 2000,
-                    showConfirmButton: false
-                });
-            },
-
-            error: function (xhr) {
+            if (!userId) {
                 Swal.fire({
                     icon: "error",
-                    title: "Request Failed",
-                    text: xhr.responseJSON?.message || "Could not request verification code."
+                    title: "User Not Logged In",
+                    text: "Please login again to continue."
                 });
+                return;
             }
-        });
-    });
 
-    // Verify DID Code
-    $("#verifyDIDBtn").on("click", function () {
-        const code = $("#didCode").val().trim();
+            // Request DID Code
+            $("#requestDIDBtn").on("click", function () {
+                Swal.fire({
+                    title: "Requesting Code...",
+                    text: "Please wait while we send the code to your email.",
+                    allowOutsideClick: false,
+                    didOpen: () => Swal.showLoading()
+                });
 
-        if (!code) {
-            Swal.fire({
-                icon: "warning",
-                title: "Missing Code",
-                text: "Please enter the verification code sent to your email."
+                $.ajax({
+                    url: "http://100.48.222.142:3000/api/v1/did/did/request-code",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({ userId }),
+
+                    success: function (response) {
+                        console.log("response1:",response);
+                        Swal.fire({
+                            icon: "success",
+                            title: "Code Sent!",
+                            text: response.message || "Check your email for the verification code.",
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+                    },
+
+                    error: function (xhr) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Request Failed",
+                            text: xhr.responseJSON?.message || "Could not request verification code."
+                        });
+                    }
+                });
             });
-            return;
-        }
 
-        Swal.fire({
-            title: "Verifying DID...",
-            text: "Please wait...",
-            allowOutsideClick: false,
-            didOpen: () => Swal.showLoading()
-        });
+            // Verify DID Code
+            $("#verifyDIDBtn").on("click", function () {
+                const code = $("#didCode").val().trim();
 
-        $.ajax({
-            url: "http://100.48.222.142:3000/api/v1/did/did/verify",
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({ userId, code }),
+                if (!code) {
+                    Swal.fire({
+                        icon: "warning",
+                        title: "Missing Code",
+                        text: "Please enter the verification code sent to your email."
+                    });
+                    return;
+                }
 
-            success: function (response) {
                 Swal.fire({
-                    icon: "success",
-                    title: "DID Verified!",
-                    text: response.message || "Your DID is now successfully verified.",
-                    timer: 1500,
-                    showConfirmButton: false
+                    title: "Verifying DID...",
+                    text: "Please wait...",
+                    allowOutsideClick: false,
+                    didOpen: () => Swal.showLoading()
                 });
 
-                setTimeout(() => {
-                    window.location.href = "/dashboard/templates/profile.html";
-                }, 1600);
-            },
+                $.ajax({
+                    url: "http://100.48.222.142:3000/api/v1/did/did/verify",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({ userId, code }),
 
-            error: function (xhr) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Verification Failed",
-                    text: xhr.responseJSON?.message || "Invalid verification code."
+                    success: function (response) {
+                        console.log("response2:",response);
+
+                        const did = response.data.did;
+                        sessionStorage.setItem("did", did);
+                        console.log("did:", did);
+                        Swal.fire({
+                            icon: "success",
+                            title: "DID Verified!",
+                            text: response.message || "Your DID is now successfully verified.",
+                            timer: 1500,
+                            showConfirmButton: false
+                        });
+
+                        // setTimeout(() => {
+                        //     window.location.href = "/dashboard/templates/profile.html";
+                        // }, 1600);
+                    },
+
+                    error: function (xhr) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Verification Failed",
+                            text: xhr.responseJSON?.message || "Invalid verification code."
+                        });
+                    }
                 });
-            }
-        });
-    });
+            });
 
-});
-</script>
+        });
+    </script>
 </body>
 
 </html>

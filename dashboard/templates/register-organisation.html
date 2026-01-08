@@ -293,154 +293,189 @@
     <!--! ================================================================ !-->
     <!--! [End] Header !-->
 
+    <main class="nxl-container">
+        <div class="main-content">
+
+            <section class="account padding-top padding-bottom sec-bg-color2">
+                <div class="container">
+                    <div class="account__wrapper" data-aos="fade-up" data-aos-duration="800">
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <div class="account__content account__content--style1">
+
+                                    <!-- account title -->
+                                    <div class="account__header">
+                                        <h2>Register Your Organization</h2>
+                                        <p>Fill in the details below to register your organization.</p>
+                                    </div>
+
+                                    <!-- account form -->
+                                    <form id="registerForm" class="account__form needs-validation" novalidate>
+                                        <div class="row g-4">
+
+                                            <!-- User Info -->
+                                            <div class="col-12 col-md-6">
+                                                <label class="form-label">First Name</label>
+                                                <input class="form-control" type="text" id="first-name"
+                                                    placeholder="Enter first name" required>
+                                            </div>
+
+                                            <div class="col-12 col-md-6">
+                                                <label class="form-label">Last Name</label>
+                                                <input class="form-control" type="text" id="last-name"
+                                                    placeholder="Enter last name" required>
+                                            </div>
+
+                                            <div class="col-12 col-md-6">
+                                                <label class="form-label">Mobile</label>
+                                                <input class="form-control" type="text" id="mobile"
+                                                    placeholder="Enter mobile number" required>
+                                            </div>
+
+                                            <div class="col-12 col-md-6">
+                                                <label class="form-label">Email</label>
+                                                <input class="form-control" type="email" id="account-email"
+                                                    placeholder="Enter email" required>
+                                            </div>
+
+                                            <!-- Organization Info -->
+                                            <div class="col-12">
+                                                <label class="form-label">Organization Name</label>
+                                                <input class="form-control" type="text" id="org-name"
+                                                    placeholder="Enter organization name" required>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <label class="form-label">Website</label>
+                                                <input class="form-control" type="text" id="org-website"
+                                                    placeholder="Enter website URL">
+                                            </div>
+
+                                            <div class="col-12">
+                                                <label class="form-label">Address</label>
+                                                <input class="form-control" type="text" id="org-address"
+                                                    placeholder="Enter address">
+                                            </div>
+
+                                            <div class="col-12">
+                                                <label class="form-label">Purpose</label>
+                                                <input class="form-control" type="text" id="org-purpose"
+                                                    placeholder="Enter purpose">
+                                            </div>
+
+                                            <div class="col-12">
+                                                <label class="form-label">Mission</label>
+                                                <input class="form-control" type="text" id="org-mission"
+                                                    placeholder="Enter mission">
+                                            </div>
+
+                                            <div class="col-12">
+                                                <label class="form-label">Category</label>
+                                                <input class="form-control" type="text" id="org-category"
+                                                    placeholder="Enter category (e.g., NGO)">
+                                            </div>
+
+                                            <!-- Bank Info -->
+                                            <div class="col-12 col-md-6">
+                                                <label class="form-label">Bank Name</label>
+                                                <input class="form-control" type="text" id="bank-name"
+                                                    placeholder="Enter bank name">
+                                            </div>
+
+                                            <div class="col-12 col-md-6">
+                                                <label class="form-label">Account Number</label>
+                                                <input class="form-control" type="text" id="account-number"
+                                                    placeholder="Enter account number">
+                                            </div>
+
+                                            <div class="col-12 col-md-6">
+                                                <label class="form-label">IFSC Code</label>
+                                                <input class="form-control" type="text" id="ifsc-code"
+                                                    placeholder="Enter IFSC code">
+                                            </div>
+
+                                            <div class="col-12 col-md-6">
+                                                <label class="form-label">Branch Name</label>
+                                                <input class="form-control" type="text" id="branch-name"
+                                                    placeholder="Enter branch name">
+                                            </div>
+
+                                            <div class="col-12 col-md-6">
+                                                <label class="form-label">GST Number</label>
+                                                <input class="form-control" type="text" id="gst-number"
+                                                    placeholder="Enter GST number">
+                                            </div>
+
+                                            <div class="col-12 col-md-6">
+                                                <label class="form-label">Registration Number</label>
+                                                <input class="form-control" type="text" id="registration-number"
+                                                    placeholder="Enter registration number">
+                                            </div>
+
+                                            <div class="col-12">
+                                                <label class="form-label">Tax Exemption Status</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="tax-status">
+                                                    <label class="form-check-label" for="tax-status">Exempted</label>
+                                                </div>
+                                            </div>
+
+                                            <!-- Contact Person -->
+                                            <div class="col-12 col-md-4">
+                                                <label class="form-label">Contact Person Name</label>
+                                                <input class="form-control" type="text" id="contact-person-name"
+                                                    placeholder="Enter name">
+                                            </div>
+
+                                            <div class="col-12 col-md-4">
+                                                <label class="form-label">Contact Person Email</label>
+                                                <input class="form-control" type="email" id="contact-person-email"
+                                                    placeholder="Enter email">
+                                            </div>
+
+                                            <div class="col-12 col-md-4">
+                                                <label class="form-label">Contact Person Phone</label>
+                                                <input class="form-control" type="text" id="contact-person-phone"
+                                                    placeholder="Enter phone">
+                                            </div>
+
+                                            <!-- Bank Passbook Upload -->
+                                            <div class="col-12">
+                                                <label class="form-label">Bank Passbook (PDF/JPG/PNG)</label>
+                                                <input class="form-control" type="file" id="bank-passbook"
+                                                    accept=".pdf,.jpg,.png">
+                                            </div>
+
+                                        </div>
+
+                                        <div class="text-center mt-4 d-flex justify-content-center"
+                                            style="margin-top: 50px;">
+                                            <button type="submit" class="btn btn-light fw-bold px-5 py-3 mb-3"
+                                                style="border-radius: 50px; font-size: 18px; box-shadow: 0px 4px 15px rgba(0,0,0,0.2);">
+                                                Register Organization
+                                            </button>
+
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- [ Main Content ] end -->
+        </div>
+        <!-- [ Footer ] end -->
+    </main>
+
 
     <!-- ===============>> account start here <<================= -->
-<section class="account padding-top padding-bottom sec-bg-color2">
-  <div class="container">
-    <div class="account__wrapper" data-aos="fade-up" data-aos-duration="800">
-      <div class="row g-4">
-        <div class="col-12">
-          <div class="account__content account__content--style1">
-
-            <!-- account title -->
-            <div class="account__header">
-              <h2>Register Your Organization</h2>
-              <p>Fill in the details below to register your organization.</p>
-            </div>
-
-            <!-- account form -->
-            <form id="registerForm" class="account__form needs-validation" novalidate>
-              <div class="row g-4">
-
-                <!-- User Info -->
-                <div class="col-12 col-md-6">
-                  <label class="form-label">First Name</label>
-                  <input class="form-control" type="text" id="first-name" placeholder="Enter first name" required>
-                </div>
-
-                <div class="col-12 col-md-6">
-                  <label class="form-label">Last Name</label>
-                  <input class="form-control" type="text" id="last-name" placeholder="Enter last name" required>
-                </div>
-
-                <div class="col-12 col-md-6">
-                  <label class="form-label">Mobile</label>
-                  <input class="form-control" type="text" id="mobile" placeholder="Enter mobile number" required>
-                </div>
-
-                <div class="col-12 col-md-6">
-                  <label class="form-label">Email</label>
-                  <input class="form-control" type="email" id="account-email" placeholder="Enter email" required>
-                </div>
-
-                <!-- Organization Info -->
-                <div class="col-12">
-                  <label class="form-label">Organization Name</label>
-                  <input class="form-control" type="text" id="org-name" placeholder="Enter organization name" required>
-                </div>
-
-                <div class="col-12">
-                  <label class="form-label">Website</label>
-                  <input class="form-control" type="text" id="org-website" placeholder="Enter website URL">
-                </div>
-
-                <div class="col-12">
-                  <label class="form-label">Address</label>
-                  <input class="form-control" type="text" id="org-address" placeholder="Enter address">
-                </div>
-
-                <div class="col-12">
-                  <label class="form-label">Purpose</label>
-                  <input class="form-control" type="text" id="org-purpose" placeholder="Enter purpose">
-                </div>
-
-                <div class="col-12">
-                  <label class="form-label">Mission</label>
-                  <input class="form-control" type="text" id="org-mission" placeholder="Enter mission">
-                </div>
-
-                <div class="col-12">
-                  <label class="form-label">Category</label>
-                  <input class="form-control" type="text" id="org-category" placeholder="Enter category (e.g., NGO)">
-                </div>
-
-                <!-- Bank Info -->
-                <div class="col-12 col-md-6">
-                  <label class="form-label">Bank Name</label>
-                  <input class="form-control" type="text" id="bank-name" placeholder="Enter bank name">
-                </div>
-
-                <div class="col-12 col-md-6">
-                  <label class="form-label">Account Number</label>
-                  <input class="form-control" type="text" id="account-number" placeholder="Enter account number">
-                </div>
-
-                <div class="col-12 col-md-6">
-                  <label class="form-label">IFSC Code</label>
-                  <input class="form-control" type="text" id="ifsc-code" placeholder="Enter IFSC code">
-                </div>
-
-                <div class="col-12 col-md-6">
-                  <label class="form-label">Branch Name</label>
-                  <input class="form-control" type="text" id="branch-name" placeholder="Enter branch name">
-                </div>
-
-                <div class="col-12 col-md-6">
-                  <label class="form-label">GST Number</label>
-                  <input class="form-control" type="text" id="gst-number" placeholder="Enter GST number">
-                </div>
-
-                <div class="col-12 col-md-6">
-                  <label class="form-label">Registration Number</label>
-                  <input class="form-control" type="text" id="registration-number" placeholder="Enter registration number">
-                </div>
-
-                <div class="col-12">
-                  <label class="form-label">Tax Exemption Status</label>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="tax-status">
-                    <label class="form-check-label" for="tax-status">Exempted</label>
-                  </div>
-                </div>
-
-                <!-- Contact Person -->
-                <div class="col-12 col-md-4">
-                  <label class="form-label">Contact Person Name</label>
-                  <input class="form-control" type="text" id="contact-person-name" placeholder="Enter name">
-                </div>
-
-                <div class="col-12 col-md-4">
-                  <label class="form-label">Contact Person Email</label>
-                  <input class="form-control" type="email" id="contact-person-email" placeholder="Enter email">
-                </div>
-
-                <div class="col-12 col-md-4">
-                  <label class="form-label">Contact Person Phone</label>
-                  <input class="form-control" type="text" id="contact-person-phone" placeholder="Enter phone">
-                </div>
-
-                <!-- Bank Passbook Upload -->
-                <div class="col-12">
-                  <label class="form-label">Bank Passbook (PDF/JPG/PNG)</label>
-                  <input class="form-control" type="file" id="bank-passbook" accept=".pdf,.jpg,.png">
-                </div>
-
-              </div>
-
-              <button type="submit" class="trk-btn trk-btn--border trk-btn--primary d-block mt-4">
-                Register Organization
-              </button>
-            </form>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 
- <!--! BEGIN: Vendors JS !-->
+
+    <!--! BEGIN: Vendors JS !-->
     <script src="./../assets/vendors/js/vendors.min.js"></script>
     <!-- vendors.min.js {always must need to be top} -->
     <script src="./../assets/vendors/js/daterangepicker.min.js"></script>
@@ -467,114 +502,114 @@
 
 
     <script>
-$(document).ready(function () {
+        $(document).ready(function () {
 
-    // Get userId from sessionStorage
-    const userId = sessionStorage.getItem("userId");
-    if (!userId) {
-        Swal.fire({
-            icon: "error",
-            title: "Not Logged In",
-            text: "Please login first to register your organization."
-        });
-        return;
-    }
-
-    // Handle form submission
-    $("#registerForm").on("submit", function (e) {
-        e.preventDefault();
-
-        // Collect all form values
-        const name = $("#first-name").val() + " " + $("#last-name").val();
-        const email = $("#account-email").val();
-        const phone = $("#mobile").val();
-        const website = $("#org-website")?.val() || ""; // optional, add input in form
-        const address = $("#org-address")?.val() || "";
-        const purpose = $("#org-purpose")?.val() || "";
-        const mission = $("#org-mission")?.val() || "";
-        const category = $("#org-category")?.val() || "";
-        const bank_name = $("#bank-name")?.val() || "";
-        const account_number = $("#account-number")?.val() || "";
-        const ifsc_code = $("#ifsc-code")?.val() || "";
-        const branch_name = $("#branch-name")?.val() || "";
-        const gst_number = $("#gst-number")?.val() || "";
-        const registration_number = $("#registration-number")?.val() || "";
-        const tax_exemption_status = $("#tax-status")?.is(":checked") ? "true" : "false";
-        const contact_person_name = $("#contact-person-name")?.val() || "";
-        const contact_person_email = $("#contact-person-email")?.val() || "";
-        const contact_person_phone = $("#contact-person-phone")?.val() || "";
-        const bank_passbook_pic = $("#bank-passbook")[0]?.files[0]; // file input
-
-        // Validate required fields
-        if (!name || !email || !phone) {
-            Swal.fire({
-                icon: "warning",
-                title: "Missing Information",
-                text: "Please fill in all required fields."
-            });
-            return;
-        }
-
-        // Build FormData
-        const formData = new FormData();
-        formData.append("userId", userId);
-        formData.append("name", name);
-        formData.append("email", email);
-        formData.append("phone", phone);
-        formData.append("website", website);
-        formData.append("address", address);
-        formData.append("purpose", purpose);
-        formData.append("mission", mission);
-        formData.append("category", category);
-        formData.append("bank_name", bank_name);
-        formData.append("account_number", account_number);
-        formData.append("ifsc_code", ifsc_code);
-        formData.append("branch_name", branch_name);
-        formData.append("gst_number", gst_number);
-        formData.append("registration_number", registration_number);
-        formData.append("tax_exemption_status", tax_exemption_status);
-        formData.append("contact_person_name", contact_person_name);
-        formData.append("contact_person_email", contact_person_email);
-        formData.append("contact_person_phone", contact_person_phone);
-        if (bank_passbook_pic) {
-            formData.append("bank_passbook_pic", bank_passbook_pic);
-        }
-
-        // Submit via AJAX
-        Swal.fire({
-            title: "Registering Organization...",
-            text: "Please wait...",
-            allowOutsideClick: false,
-            didOpen: () => Swal.showLoading()
-        });
-
-        $.ajax({
-            url: "http://100.48.222.142:3000/api/v1/organisation/add",
-            type: "POST",
-            data: formData,
-            processData: false, // important for FormData
-            contentType: false, // important for FormData
-            success: function (response) {
-                Swal.fire({
-                    icon: "success",
-                    title: "Organization Registered!",
-                    text: response.message || "Your organization has been successfully registered.",
-                    timer: 2000,
-                    showConfirmButton: false
-                });
-
-                // Optionally reset the form
-                $("#registerForm")[0].reset();
-            },
-            error: function (xhr) {
+            // Get userId from sessionStorage
+            const userId = sessionStorage.getItem("userId");
+            if (!userId) {
                 Swal.fire({
                     icon: "error",
-                    title: "Registration Failed",
-                    text: xhr.responseJSON?.message || "Something went wrong. Please try again."
+                    title: "Not Logged In",
+                    text: "Please login first to register your organization."
                 });
+                return;
             }
+
+            // Handle form submission
+            $("#registerForm").on("submit", function (e) {
+                e.preventDefault();
+
+                // Collect all form values
+                const name = $("#first-name").val() + " " + $("#last-name").val();
+                const email = $("#account-email").val();
+                const phone = $("#mobile").val();
+                const website = $("#org-website")?.val() || ""; // optional, add input in form
+                const address = $("#org-address")?.val() || "";
+                const purpose = $("#org-purpose")?.val() || "";
+                const mission = $("#org-mission")?.val() || "";
+                const category = $("#org-category")?.val() || "";
+                const bank_name = $("#bank-name")?.val() || "";
+                const account_number = $("#account-number")?.val() || "";
+                const ifsc_code = $("#ifsc-code")?.val() || "";
+                const branch_name = $("#branch-name")?.val() || "";
+                const gst_number = $("#gst-number")?.val() || "";
+                const registration_number = $("#registration-number")?.val() || "";
+                const tax_exemption_status = $("#tax-status")?.is(":checked") ? "true" : "false";
+                const contact_person_name = $("#contact-person-name")?.val() || "";
+                const contact_person_email = $("#contact-person-email")?.val() || "";
+                const contact_person_phone = $("#contact-person-phone")?.val() || "";
+                const bank_passbook_pic = $("#bank-passbook")[0]?.files[0]; // file input
+
+                // Validate required fields
+                if (!name || !email || !phone) {
+                    Swal.fire({
+                        icon: "warning",
+                        title: "Missing Information",
+                        text: "Please fill in all required fields."
+                    });
+                    return;
+                }
+
+                // Build FormData
+                const formData = new FormData();
+                formData.append("userId", userId);
+                formData.append("name", name);
+                formData.append("email", email);
+                formData.append("phone", phone);
+                formData.append("website", website);
+                formData.append("address", address);
+                formData.append("purpose", purpose);
+                formData.append("mission", mission);
+                formData.append("category", category);
+                formData.append("bank_name", bank_name);
+                formData.append("account_number", account_number);
+                formData.append("ifsc_code", ifsc_code);
+                formData.append("branch_name", branch_name);
+                formData.append("gst_number", gst_number);
+                formData.append("registration_number", registration_number);
+                formData.append("tax_exemption_status", tax_exemption_status);
+                formData.append("contact_person_name", contact_person_name);
+                formData.append("contact_person_email", contact_person_email);
+                formData.append("contact_person_phone", contact_person_phone);
+                if (bank_passbook_pic) {
+                    formData.append("bank_passbook_pic", bank_passbook_pic);
+                }
+
+                // Submit via AJAX
+                Swal.fire({
+                    title: "Registering Organization...",
+                    text: "Please wait...",
+                    allowOutsideClick: false,
+                    didOpen: () => Swal.showLoading()
+                });
+
+                $.ajax({
+                    url: "http://100.48.222.142:3000/api/v1/organisation/add",
+                    type: "POST",
+                    data: formData,
+                    processData: false, // important for FormData
+                    contentType: false, // important for FormData
+                    success: function (response) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Organization Registered!",
+                            text: response.message || "Your organization has been successfully registered.",
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+
+                        // Optionally reset the form
+                        $("#registerForm")[0].reset();
+                    },
+                    error: function (xhr) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Registration Failed",
+                            text: xhr.responseJSON?.message || "Something went wrong. Please try again."
+                        });
+                    }
+                });
+            });
         });
-    });
-});
-</script>
+    </script>
 </body>
