@@ -296,50 +296,39 @@
     <!--! ================================================================ !-->
     <!--! [Start] Main Content !-->
     <!--! ================================================================ !-->
-    <main class="nxl-container">
-        <div class="main-content">
-            <div class="row justify-content-center">
-                <div class="col-xl-12">
-                    <div class="card stretch stretch-full"
-                        style="margin-left: 20px; margin-right: 20px; margin-top: 20px; margin-bottom: 20px;">
-                        <div class="card-body">
-                            <div style="margin-bottom: 20px;">
-                                <h4 class="mb-3">DID Verification</h4>
-                            </div>
+  <main class="nxl-container">
+    <div class="main-content">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card text-center p-4" style="margin: 20px;">
+                    <h3 class="fw-bold mb-3">Verify Your DID</h3>
+                    <p class="mb-4" style="opacity: 0.9;">
+                        Click the button to request a verification code via email, then enter it below to verify your DID.
+                    </p>
 
-                            <!-- Hidden userId field -->
-                            <input type="hidden" id="userId">
+                    <!-- Request Code Button -->
+                    <button id="requestDIDBtn" class="btn btn-light fw-bold px-5 py-3 mb-3"
+                        style="border-radius: 50px; font-size: 18px; box-shadow: 0px 4px 15px rgba(0,0,0,0.2);">
+                        <i class="fa-solid fa-envelope me-2"></i> Request Verification Code
+                    </button>
 
-                            <!-- Document Type -->
-                            <!-- <div class="col-lg-12 mb-4">
-                                <label class="form-label">Document Type<span class="text-danger">*</span></label>
-                                <select class="form-select" id="documentType" data-select2-selector="icon">
-                                    <option value="" disabled selected>Select Document</option>
-                                    <option value="aadhar">Aadhaar</option>
-                                    <option value="pan">PAN</option>
-                                </select>
-                            </div> -->
-
-                            <!-- File Upload -->
-                            <div class="mb-3">
-                                <label class="form-label">Verification code from email <span
-                                        class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="code">
-                            </div>
-
-                            <div class="text-end" style="margin-top: 20px;">
-                                <button class="btn btn-primary" id="submitKycBtn">Verify DID</button>
-                            </div>
-
-                        </div>
+                    <!-- Code Input -->
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="didCode" placeholder="Enter verification code">
                     </div>
+
+                    <!-- Verify Button -->
+                    <button id="verifyDIDBtn" class="btn btn-primary fw-bold px-5 py-3"
+                        style="border-radius: 50px; font-size: 18px;">
+                        Verify DID
+                    </button>
                 </div>
             </div>
-
-            <!-- [ Main Content ] end -->
         </div>
-        <!-- [ Footer ] end -->
-    </main>
+    </div>
+</main>
+
+     
     <!--! ================================================================ !-->
     <!--! [End] Main Content !-->
     <!--! ================================================================ !-->
@@ -374,180 +363,109 @@
     <!--! BEGIN: Theme Customizer  !-->
     <script src="./../assets/js/theme-customizer-init.min.js"></script>
     <!--! END: Theme Customizer !-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <script>
+$(document).ready(function () {
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    const userId = sessionStorage.getItem("userId");
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
+    if (!userId) {
+        Swal.fire({
+            icon: "error",
+            title: "User Not Logged In",
+            text: "Please login again to continue."
+        });
+        return;
+    }
 
-            var userId = JSON.parse(sessionStorage.getItem("userId"));
-            document.getElementById("userId").value = userId;
+    // Request DID Code
+    $("#requestDIDBtn").on("click", function () {
+        Swal.fire({
+            title: "Requesting Code...",
+            text: "Please wait while we send the code to your email.",
+            allowOutsideClick: false,
+            didOpen: () => Swal.showLoading()
+        });
 
-            if (!userId) {
+        $.ajax({
+            url: "http://100.48.222.142:3000/api/v1/did/did/request-code",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ userId }),
+
+            success: function (response) {
                 Swal.fire({
-                    title: "Not Logged In",
-                    text: "Please login to verify your wallet.",
-                    icon: "warning",
-                    allowOutsideClick: false,
-                    showConfirmButton: false,
-                    didOpen: () => Swal.showLoading()
+                    icon: "success",
+                    title: "Code Sent!",
+                    text: response.message || "Check your email for the verification code.",
+                    timer: 2000,
+                    showConfirmButton: false
                 });
+            },
 
-                setTimeout(() => {
-                    window.location.href = "/signin.html";
-                }, 1500);
-
-                return;
+            error: function (xhr) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Request Failed",
+                    text: xhr.responseJSON?.message || "Could not request verification code."
+                });
             }
+        });
+    });
 
-            document.getElementById("submitKycBtn").addEventListener("click", function () {
+    // Verify DID Code
+    $("#verifyDIDBtn").on("click", function () {
+        const code = $("#didCode").val().trim();
 
-                const code = document.getElementById("code").value.trim();
-
-                if (!code) {
-                    Swal.fire({
-                        icon: "warning",
-                        title: "Missing Code",
-                        text: "Please enter the verification code sent to your email."
-                    });
-                    return;
-                }
-
-                const payload = {
-                    userId: userId,
-                    code: code
-                };
-
-                Swal.fire({
-                    title: "Verifying Wallet...",
-                    text: "Please wait...",
-                    allowOutsideClick: false,
-                    didOpen: () => Swal.showLoading()
-                });
-
-                $.ajax({
-                    url: "https://block-chain-based-universal-income-system.onrender.com/api/v1/did/did/verify",
-                    type: "POST",
-                    contentType: "application/json",
-                    data: JSON.stringify(payload),
-
-                    success: function (response) {
-                        Swal.fire({
-                            icon: "success",
-                            title: "Wallet Verified!",
-                            text: response.message || "Your wallet is now successfully verified.",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-
-                        setTimeout(() => {
-                            window.location.href = "/dashboard/templates/profile.html";
-                        }, 1600);
-                    },
-
-                    error: function (xhr) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Verification Failed",
-                            text: xhr.responseJSON?.message || "Invalid verification code."
-                        });
-                    }
-                });
-
+        if (!code) {
+            Swal.fire({
+                icon: "warning",
+                title: "Missing Code",
+                text: "Please enter the verification code sent to your email."
             });
+            return;
+        }
 
+        Swal.fire({
+            title: "Verifying DID...",
+            text: "Please wait...",
+            allowOutsideClick: false,
+            didOpen: () => Swal.showLoading()
         });
-    </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        $.ajax({
+            url: "http://100.48.222.142:3000/api/v1/did/did/verify",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ userId, code }),
 
-            var userId = JSON.parse(sessionStorage.getItem("userId"));
-            console.log("Loaded User ID:", userId);
-
-            if (!userId) {
+            success: function (response) {
                 Swal.fire({
-                    title: "Not Logged In",
-                    text: "You need to login first.",
-                    icon: "warning",
-                    allowOutsideClick: false,
-                    showConfirmButton: false,
-                    didOpen: () => {
-                        Swal.showLoading();
-                    }
+                    icon: "success",
+                    title: "DID Verified!",
+                    text: response.message || "Your DID is now successfully verified.",
+                    timer: 1500,
+                    showConfirmButton: false
                 });
 
                 setTimeout(() => {
-                    window.location.href = "/signin.html";
-                }, 1500);
+                    window.location.href = "/dashboard/templates/profile.html";
+                }, 1600);
+            },
 
-                return;
-            }
-
-            const logoutButton = document.getElementById("logoutBtn");
-
-            function deleteCookie(name) {
-                document.cookie = name + "=; Max-Age=0; path=/; domain=" + location.hostname;
-            }
-
-            function clearAllUserData() {
-                console.warn("Clearing ALL localStorage, sessionStorage, and cookies...");
-                localStorage.clear();
-                sessionStorage.clear();
-                deleteCookie("token");
-                console.warn("All user data cleared.");
-            }
-
-            if (logoutButton) {
-                logoutButton.addEventListener("click", function (event) {
-                    event.preventDefault();
-
-                    Swal.fire({
-                        title: "Are you sure?",
-                        text: "You will be logged out!",
-                        icon: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#05DAC3",
-                        cancelButtonColor: "#d33",
-                        confirmButtonText: "Yes, logout"
-                    }).then((result) => {
-
-                        if (result.isConfirmed) {
-
-                            Swal.fire({
-                                title: "Logging you out...",
-                                allowOutsideClick: false,
-                                didOpen: () => Swal.showLoading()
-                            });
-
-                            clearAllUserData();
-
-                            setTimeout(() => {
-                                Swal.fire({
-                                    title: "Logged out!",
-                                    text: "You have been successfully logged out.",
-                                    icon: "success",
-                                    confirmButtonColor: "#05DAC3",
-                                    showConfirmButton: false,
-                                    timer: 1200
-                                });
-
-                                setTimeout(() => {
-                                    window.location.href = "/signin.html";
-                                }, 1300);
-
-                            }, 900);
-                        }
-
-                    });
+            error: function (xhr) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Verification Failed",
+                    text: xhr.responseJSON?.message || "Invalid verification code."
                 });
             }
-
         });
-    </script>
+    });
 
+});
+</script>
 </body>
 
 </html>
